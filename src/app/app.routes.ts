@@ -13,6 +13,11 @@ export const routes: Routes = [
   },
 
   {
+    path: 'comprar',
+    loadComponent: () => import('./features/comprar/compras/compras').then((m) => m.Compras),
+  },
+
+  {
     path: 'sobre-nos',
     loadComponent: () => import('./features/sobre-nos/sobre-nos/sobre-nos').then((m) => m.SobreNos),
   },

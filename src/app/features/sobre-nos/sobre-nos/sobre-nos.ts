@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-sobre-nos',
+  selector: 'sobre-nos',
+  standalone: true,
   imports: [],
   templateUrl: './sobre-nos.html',
   styleUrl: './sobre-nos.css',
 })
-export class SobreNos {
-
-}
+export class SobreNosComponent {}

@@ -1,1 +1,56 @@
-<p>home works!</p>
+<main class="home-page">
+  <header class="topbar">
+    <a class="brand" routerLink="/" aria-label="Página inicial da Aurora">
+      <span class="brand-mark">A</span>
+      <span>Aurora <small>Livraria</small></span>
+    </a>
+    <nav aria-label="Navegação principal">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Início</a>
+      <a routerLink="/produtos">Produtos</a>
+      <a routerLink="/comprar">Comprar</a>
+      <a routerLink="/sobre-nos">Sobre nós</a>
+    </nav>
+    <a class="nav-cta" routerLink="/comprar">Explorar livros <span>→</span></a>
+  </header>
+
+  <section class="hero">
+    <img src="/images/hero-livraria.png" alt="Interior acolhedor de uma biblioteca" />
+    <div class="hero-content">
+      <p class="eyebrow">Seu próximo capítulo começa aqui</p>
+      <h1>Histórias que encontram você.</h1>
+      <p class="hero-text">Descubra livros para guardar, presentear e transformar cada momento de leitura.</p>
+      <div class="hero-actions">
+        <a routerLink="/comprar" class="button primary">Comprar livros</a>
+        <a routerLink="/produtos" class="button ghost">Ver catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <p class="eyebrow">Curadoria da Aurora</p>
+    <h2>Livros escolhidos para fazer companhia</h2>
+    <p>Entre novidades, clássicos e autores brasileiros, sempre há uma estante esperando por você.</p>
+  </section>
+
+  <section class="book-section" aria-labelledby="destaques-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Para começar</p><h2 id="destaques-title">Destaques da semana</h2></div>
+      <a routerLink="/produtos">Ver todos <span>→</span></a>
+    </div>
+    <div class="book-grid">
+      @for (livro of destaques; track livro.titulo) {
+        <article class="book-card">
+          <div class="cover" [class]="'cover ' + livro.cor"><span>{{ livro.titulo }}</span><small>{{ livro.autor }}</small></div>
+          <div class="book-info"><span class="tag">{{ livro.tag }}</span><h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p><strong>R$ 49,90</strong></div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="visit">
+    <div><p class="eyebrow">Muito além das páginas</p><h2>Uma livraria feita para leitores.</h2><p>Conheça nossa seleção, encontre novas vozes e deixe que boas histórias iluminem a sua rotina.</p></div>
+    <a routerLink="/sobre-nos" class="button dark">Conheça a Aurora</a>
+  </section>
+
+  <footer><a class="brand" routerLink="/"><span class="brand-mark">A</span><span>Aurora <small>Livraria</small></span></a><p>Histórias para todos os capítulos da vida.</p></footer>
+</main>

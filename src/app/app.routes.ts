@@ -8,11 +8,6 @@ export const routes: Routes = [
   },
 
   {
-    path: 'produtos',
-    loadComponent: () => import('./features/produtos/produtos/produtos').then((m) => m.Produtos),
-  },
-
-  {
     path: 'comprar',
     loadComponent: () => import('./features/comprar/compras/compras').then((m) => m.Compras),
   },

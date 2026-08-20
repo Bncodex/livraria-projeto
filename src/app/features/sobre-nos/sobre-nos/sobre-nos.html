@@ -1,4 +1,17 @@
-<section class="sobre-nos">
+<main class="sobre-page">
+  <header class="topbar">
+    <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário">
+      <img src="/images/logoprojeto.jpeg" alt="Universo Literário" />
+    </a>
+    <nav aria-label="Navegação principal">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Início</a>
+      <a routerLink="/comprar" routerLinkActive="active">Comprar</a>
+      <a routerLink="/sobre-nos" routerLinkActive="active">Sobre nós</a>
+    </nav>
+    <a class="nav-cta" routerLink="/comprar">Explorar livros <span>→</span></a>
+  </header>
+
+  <section class="sobre-nos">
   <div class="sobre-container">
     <div class="sobre-texto">
       <span class="titulo-pequeno">SOBRE O UNIVERSO LITERÁRIO</span>
@@ -46,7 +59,7 @@
 
     <div class="sobre-imagem">
       <div class="imagem">
-        <img src="../../../../../images/interiordouniversoliterario.jpeg" alt="Interior do Universo Literário" />
+        <img src="/images/interiordouniversoliterario.jpeg" alt="Interior do Universo Literário" />
       </div>
 
       <div class="frase">
@@ -55,4 +68,5 @@
       </div>
     </div>
   </div>
-</section>
+  </section>
+</main>

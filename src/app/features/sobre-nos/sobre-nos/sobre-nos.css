@@ -1,3 +1,13 @@
+.sobre-page { min-height: 100vh; background: #f8f5ef; }
+.topbar { height: 98px; display: flex; align-items: center; justify-content: space-between; max-width: 1240px; margin: auto; padding: 0 32px; background: #fffdf8; }
+.brand { display: inline-flex; align-items: center; text-decoration: none; }
+.brand img { display: block; width: 88px; height: 88px; object-fit: contain; }
+nav { display: flex; align-items: center; gap: 32px; }
+nav a { text-decoration: none; font-size: .9rem; font-weight: 700; color: #32465e; border-bottom: 2px solid transparent; padding: 29px 0 26px; }
+nav a:hover, nav a.active { color: #6f42c1; border-color: #6f42c1; }
+.nav-cta { color: #6f42c1; font-size: .84rem; font-weight: bold; text-decoration: none; }
+.nav-cta span { font-size: 1.2em; margin-left: 5px; }
+
 .sobre-nos {
   background: #f8f5ef;
   padding: 100px 8%;
@@ -19,7 +29,7 @@
 }
 
 .titulo-pequeno {
-  color: #c84f3c;
+  color: #6f42c1;
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -35,7 +45,7 @@ h1 {
 }
 
 h1 span {
-  color: #c84f3c;
+  color: #6f42c1;
 }
 
 .sobre-texto > p {
@@ -58,7 +68,7 @@ h1 span {
 }
 
 .valor span {
-  color: #c84f3c;
+  color: #6f42c1;
   font-size: 13px;
   font-weight: bold;
 }
@@ -116,8 +126,26 @@ h1 span {
 .frase span {
   display: block;
 
-  color: #df6b2f;
+  color: #c7a6ed;
 
   font-size: 45px;
   line-height: 25px;
+}
+
+@media (max-width: 850px) {
+  .sobre-container { grid-template-columns: 1fr; gap: 50px; }
+  .sobre-texto { max-width: none; }
+}
+
+@media (max-width: 760px) {
+  .topbar { height: auto; padding: 18px 22px; flex-wrap: wrap; gap: 16px; }
+  .topbar nav { order: 3; width: 100%; justify-content: space-between; gap: 8px; }
+  .topbar nav a { padding: 4px 0; font-size: .75rem; }
+  .nav-cta { display: none; }
+  .brand img { width: 76px; height: 76px; }
+  .sobre-nos { padding: 70px 7%; }
+  h1 { font-size: clamp(2.4rem, 10vw, 3.3rem); }
+  .valores { grid-template-columns: 1fr; }
+  .imagem { height: 410px; }
+  .frase { left: 0; bottom: -25px; width: min(250px, calc(100% - 40px)); }
 }

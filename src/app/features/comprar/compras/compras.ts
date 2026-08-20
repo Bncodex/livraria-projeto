@@ -14,6 +14,7 @@ export class Compras {
     { id: 2, titulo: 'Torto Arado', autor: 'Itamar Vieira Junior', preco: 42.9, cor: 'earth' },
     { id: 3, titulo: 'Orgulho e Preconceito', autor: 'Jane Austen', preco: 39.9, cor: 'rose' },
     { id: 4, titulo: 'O sol é para todos', autor: 'Harper Lee', preco: 45.9, cor: 'sunset' },
+    { id: 5, titulo: 'O pequeno Príncipe', autor: 'Antoine de Saint-Exupéry', preco: 15.9, cor: 'rose' },
   ];
   readonly carrinho = signal<typeof this.livros>([]);
   readonly total = computed(() => this.carrinho().reduce((soma, livro) => soma + livro.preco, 0));

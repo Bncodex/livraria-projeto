@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { SobreNosComponent } from './features/sobre-nos/sobre-nos/sobre-nos';
 import { authGuard } from './core/guards/auth.guard';
 
+
 export const routes: Routes = [
   
     {
@@ -15,6 +16,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
 
+   
   {
     path: 'sobre-nos',
     loadComponent: () => import('./features/sobre-nos/sobre-nos/sobre-nos').then(m => m.SobreNosComponent),

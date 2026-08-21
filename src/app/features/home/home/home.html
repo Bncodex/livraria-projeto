@@ -1,3 +1,123 @@
+<<<<<<< HEAD
+<header class="navbar">
+
+  <div class="logo">
+    <span>Universo Literário</span>
+  </div>
+
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Produtos</a>
+    <a href="#">Comprar Livros</a>
+    <a href="#">Empréstimos</a>
+    <a href="#">Sobre Nós</a>
+  </nav>
+
+</header>
+
+
+<main>
+
+  <!-- BANNER -->
+
+  <section class="banner">
+
+    <div class="banner-text">
+
+      <h1>
+        Descubra seu próximo livro:<br>
+        Compre ou pegue<br>
+        emprestado.
+      </h1>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRIMEIRA FILEIRA DE LIVROS -->
+
+  <section class="books-section">
+
+    <div class="section-header">
+
+      <h2>Featured Books</h2>
+
+      <a href="#">View all</a>
+
+    </div>
+
+
+    <div class="books-container">
+
+      @for (livro of livros.slice(0, 5); track livro.titulo) {
+
+        <article class="book-card">
+
+          <img
+            [src]="livro.imagem"
+            [alt]="livro.titulo"
+          >
+
+          <h3>{{ livro.titulo }}</h3>
+
+          <p>By {{ livro.autor }}</p>
+
+          <strong>
+            R$ {{ livro.preco.toFixed(2).replace('.', ',') }}
+          </strong>
+
+        </article>
+
+      }
+
+    </div>
+
+  </section>
+
+
+  <!-- SEGUNDA FILEIRA DE LIVROS -->
+
+  <section class="books-section">
+
+    <div class="section-header">
+
+      <h2>Featured Books</h2>
+
+      <a href="#">View all</a>
+
+    </div>
+
+
+    <div class="books-container">
+
+      @for (livro of livros.slice(5, 10); track livro.titulo) {
+
+        <article class="book-card">
+
+          <img
+            [src]="livro.imagem"
+            [alt]="livro.titulo"
+          >
+
+          <h3>{{ livro.titulo }}</h3>
+
+          <p>By {{ livro.autor }}</p>
+
+          <strong>
+            R$ {{ livro.preco.toFixed(2).replace('.', ',') }}
+          </strong>
+
+        </article>
+
+      }
+
+    </div>
+
+  </section>
+
+</main>
+=======
 <main class="home-page">
   <header class="topbar">
     <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"><img src="/images/logoprojeto.jpeg" alt="Universo Literário" /></a>
@@ -49,3 +169,4 @@
 
   <footer><a class="brand" routerLink="/"><img src="/images/logoprojeto.jpeg" alt="Universo Literário" /></a><p>Universo Literário: onde cada página acende uma estrela.</p></footer>
 </main>
+>>>>>>> master

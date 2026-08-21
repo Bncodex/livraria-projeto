@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-home',
+<<<<<<< HEAD
   standalone: true,
   imports: [],
+=======
+  imports: [RouterLink, RouterLinkActive],
+>>>>>>> master
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {
+<<<<<<< HEAD
   livros = [
     {
       titulo: 'Descubra seu Compras',
@@ -80,3 +86,12 @@ export class Home {
     },
   ];
 }
+=======
+  readonly destaques = [
+    { titulo: 'A biblioteca da meia-noite', autor: 'Matt Haig', cor: 'midnight', tag: 'Mais vendido' },
+    { titulo: 'O sol é para todos', autor: 'Harper Lee', cor: 'sunset', tag: 'Clássico' },
+    { titulo: 'Torto Arado', autor: 'Itamar Vieira Junior', cor: 'earth', tag: 'Nacional' },
+    { titulo: 'Orgulho e Preconceito', autor: 'Jane Austen', cor: 'rose', tag: 'Romance' },
+  ];
+}
+>>>>>>> master

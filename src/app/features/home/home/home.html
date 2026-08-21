@@ -1,0 +1,51 @@
+<main class="home-page">
+  <header class="topbar">
+    <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"><img src="/images/logoprojeto.jpeg" alt="Universo Literário" /></a>
+    <nav aria-label="Navegação principal">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Início</a>
+      <a routerLink="/comprar">Comprar</a>
+      <a routerLink="/sobre-nos">Sobre nós</a>
+    </nav>
+    <a class="nav-cta" routerLink="/comprar">Explorar livros <span>→</span></a>
+  </header>
+
+  <section class="hero">
+    <img src="/images/hero-livraria.png" alt="Interior acolhedor de uma biblioteca" />
+    <div class="hero-content">
+      <p class="eyebrow">Um universo inteiro em cada página</p>
+      <h1>Seu próximo mundo começa aqui.</h1>
+      <p class="hero-text">No Universo Literário, cada leitura é uma constelação de encontros, memórias e novas possibilidades.</p>
+      <div class="hero-actions">
+        <a routerLink="/comprar" class="button primary">Comprar livros</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <p class="eyebrow">Curadoria do Universo Literário</p>
+    <h2>Livros escolhidos para iluminar a sua jornada</h2>
+    <p>Entre clássicos, novidades e vozes brasileiras, há sempre uma história pronta para encontrar você.</p>
+  </section>
+
+  <section class="book-section" aria-labelledby="destaques-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Estrelas da estante</p><h2 id="destaques-title">Destaques da semana</h2></div>
+      <a routerLink="/comprar">Ver todos <span>→</span></a>
+    </div>
+    <div class="book-grid">
+      @for (livro of destaques; track livro.titulo) {
+        <article class="book-card">
+          <div class="cover" [class]="'cover ' + livro.cor"><span>{{ livro.titulo }}</span><small>{{ livro.autor }}</small></div>
+          <div class="book-info"><span class="tag">{{ livro.tag }}</span><h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p><strong>R$ 49,90</strong></div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="visit">
+    <div><p class="eyebrow">Muito além das páginas</p><h2>Um refúgio para quem vive de histórias.</h2><p>Descubra novas vozes, abrace outros mundos e deixe a literatura fazer morada nos seus dias.</p></div>
+    <a routerLink="/sobre-nos" class="button dark">Conheça o Universo</a>
+  </section>
+
+  <footer><a class="brand" routerLink="/"><img src="/images/logoprojeto.jpeg" alt="Universo Literário" /></a><p>Universo Literário: onde cada página acende uma estrela.</p></footer>
+</main>

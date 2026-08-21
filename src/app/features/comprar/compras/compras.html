@@ -23,10 +23,7 @@
       <div class="catalog-grid">
         @for (livro of livros; track livro.id) {
           <article class="shop-book">
-            <div [class]="'cover ' + livro.cor">
-              <span>{{ livro.titulo }}</span
-              ><small>{{ livro.autor }}</small>
-            </div>
+            <img class="cover" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" />
             <h3>{{ livro.titulo }}</h3>
             <p>{{ livro.autor }}</p>
             <strong>{{ livro.preco | currency: 'BRL' }}</strong

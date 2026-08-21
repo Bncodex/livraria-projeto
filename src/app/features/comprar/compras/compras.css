@@ -98,36 +98,11 @@ aside h2 {
   box-shadow: 0 8px 23px rgba(17, 42, 66, 0.1);
 }
 .cover {
-  min-height: 235px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 22px;
-  color: white;
-  font:
-    bold 1.5rem/1.05 Georgia,
-    serif;
-}
-.cover small {
-  margin-top: 10px;
-  font:
-    0.58rem Inter,
-    Arial,
-    sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-.midnight {
-  background: linear-gradient(145deg, #111528, #36557d);
-}
-.earth {
-  background: linear-gradient(145deg, #566550, #1b2922);
-}
-.rose {
-  background: linear-gradient(145deg, #c68b91, #6b2934);
-}
-.sunset {
-  background: linear-gradient(145deg, #7b3fb1, #35145c);
+  width: 100%;
+  height: 300px;
+  display: block;
+  object-fit: contain;
+  background: #f5f2eb;
 }
 .shop-book h3 {
   margin: 15px 0 4px;
@@ -234,9 +209,7 @@ aside {
     gap: 12px;
   }
   .cover {
-    min-height: 185px;
-    padding: 14px;
-    font-size: 1.15rem;
+    height: 230px;
   }
   aside {
     position: static;

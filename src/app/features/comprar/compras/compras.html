@@ -4,7 +4,11 @@
       ><img src="/images/logoprojeto.jpeg" alt="Universo Literário"
     /></a>
     <nav><a routerLink="/">Início</a><a routerLink="/sobre-nos">Sobre nós</a></nav>
-    <a class="cart-link">Sacola ({{ carrinho().length }})</a>
+    <div class="header-actions">
+      <app-conta-conectada /><span class="cart-link" aria-label="Itens na sacola"
+        >Sacola ({{ carrinho.quantidade() }})</span
+      >
+    </div>
   </header>
   <section class="shop-hero">
     <p>Universo Literário</p>
@@ -34,15 +38,15 @@
     <aside id="carrinho">
       <div class="bag-head">
         <h2>Sua sacola</h2>
-        <span>{{ carrinho().length }} item(ns)</span>
+        <span>{{ carrinho.quantidade() }} item(ns)</span>
       </div>
-      @if (carrinho().length === 0) {
+      @if (carrinho.quantidade() === 0) {
         <p class="empty">
           Sua sacola ainda está vazia. Escolha uma história e comece a sua viagem pelo Universo
           Literário.
         </p>
       } @else {
-        @for (livro of carrinho(); track $index) {
+        @for (livro of carrinho.itens(); track $index) {
           <div class="bag-item">
             <div>
               <strong>{{ livro.titulo }}</strong
@@ -52,9 +56,9 @@
           </div>
         }
         <div class="total">
-          <span>Total</span><strong>{{ total() | currency: 'BRL' }}</strong>
+          <span>Total</span><strong>{{ carrinho.total() | currency: 'BRL' }}</strong>
         </div>
-        <button class="checkout">Finalizar compra</button>
+        <a class="checkout" routerLink="/checkout">Finalizar compra</a>
       }
     </aside>
   </div>

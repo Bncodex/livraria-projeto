@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ContaConectada } from '../../../core/components/conta-conectada/conta-conectada';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, ContaConectada],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

@@ -1,6 +1,65 @@
 <main class="shop-page">
-  <header><a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"><img src="/images/logoprojeto.jpeg" alt="Universo Literário" /></a><nav><a routerLink="/">Início</a><a routerLink="/sobre-nos">Sobre nós</a></nav><a class="cart-link" href="#carrinho">Sacola ({{ carrinho().length }})</a></header>
-  <section class="shop-hero"><p>Universo Literário</p><h1>Encontre a história que vai acompanhar o seu céu.</h1></section>
-  <div class="shop-layout"><section><div class="catalog-title"><h2>Todos os livros</h2><span>{{ livros.length }} títulos selecionados</span></div><div class="catalog-grid">@for (livro of livros; track livro.id) {<article class="shop-book"><div [class]="'cover ' + livro.cor"><span>{{ livro.titulo }}</span><small>{{ livro.autor }}</small></div><h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p><strong>{{ livro.preco | currency:'BRL' }}</strong><button (click)="adicionar(livro)">Adicionar à sacola</button></article>}</div></section>
-  <aside id="carrinho"><div class="bag-head"><h2>Sua sacola</h2><span>{{ carrinho().length }} item(ns)</span></div>@if (carrinho().length === 0) {<p class="empty">Sua sacola ainda está vazia. Escolha uma história e comece a sua viagem pelo Universo Literário.</p>} @else {@for (livro of carrinho(); track $index) {<div class="bag-item"><div><strong>{{ livro.titulo }}</strong><span>{{ livro.preco | currency:'BRL' }}</span></div><button (click)="remover($index)" aria-label="Remover livro">×</button></div>}<div class="total"><span>Total</span><strong>{{ total() | currency:'BRL' }}</strong></div><button class="checkout">Finalizar compra</button>}</aside></div>
+  <header>
+    <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"
+      ><img src="/images/logoprojeto.jpeg" alt="Universo Literário"
+    /></a>
+    <nav><a routerLink="/">Início</a><a routerLink="/sobre-nos">Sobre nós</a></nav>
+    <div class="header-actions">
+      <app-conta-conectada /><span class="cart-link" aria-label="Itens na sacola"
+        >Sacola ({{ carrinho.quantidade() }})</span
+      >
+    </div>
+  </header>
+  <section class="shop-hero">
+    <p>Universo Literário</p>
+    <h1>Encontre a história que vai acompanhar o seu céu.</h1>
+  </section>
+  <div class="shop-layout">
+    <section>
+      <div class="catalog-title">
+        <h2>Todos os livros</h2>
+        <span>{{ livros.length }} títulos selecionados</span>
+      </div>
+      <div class="catalog-grid">
+        @for (livro of livros; track livro.id) {
+          <article class="shop-book">
+            <div [class]="'cover ' + livro.cor">
+              <span>{{ livro.titulo }}</span
+              ><small>{{ livro.autor }}</small>
+            </div>
+            <h3>{{ livro.titulo }}</h3>
+            <p>{{ livro.autor }}</p>
+            <strong>{{ livro.preco | currency: 'BRL' }}</strong
+            ><button (click)="adicionar(livro)">Adicionar à sacola</button>
+          </article>
+        }
+      </div>
+    </section>
+    <aside id="carrinho">
+      <div class="bag-head">
+        <h2>Sua sacola</h2>
+        <span>{{ carrinho.quantidade() }} item(ns)</span>
+      </div>
+      @if (carrinho.quantidade() === 0) {
+        <p class="empty">
+          Sua sacola ainda está vazia. Escolha uma história e comece a sua viagem pelo Universo
+          Literário.
+        </p>
+      } @else {
+        @for (livro of carrinho.itens(); track $index) {
+          <div class="bag-item">
+            <div>
+              <strong>{{ livro.titulo }}</strong
+              ><span>{{ livro.preco | currency: 'BRL' }}</span>
+            </div>
+            <button (click)="remover($index)" aria-label="Remover livro">×</button>
+          </div>
+        }
+        <div class="total">
+          <span>Total</span><strong>{{ carrinho.total() | currency: 'BRL' }}</strong>
+        </div>
+        <a class="checkout" routerLink="/checkout">Finalizar compra</a>
+      }
+    </aside>
+  </div>
 </main>

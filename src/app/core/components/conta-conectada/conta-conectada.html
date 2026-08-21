@@ -1,0 +1,8 @@
+@if (auth.estaLogado() && auth.usuario(); as usuario) {
+  <div class="session">
+    <span class="session-name" title="Conta conectada">Olá, {{ usuario.nome }}</span
+    ><button type="button" (click)="sair()">Sair</button>
+  </div>
+} @else {
+  <a class="login-link" routerLink="/login">Entrar</a>
+}

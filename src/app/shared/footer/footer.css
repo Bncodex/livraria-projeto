@@ -1,27 +1,24 @@
-
 .footer {
   background-color: #11104a;
   color: #ffffff;
   margin-top: 40px;
 }
 
-.footer-container {
+.container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-
   display: flex;
   justify-content: space-between;
   gap: 50px;
-
   padding: 45px 0 35px;
 }
 
-.footer-column {
+.sobre {
   flex: 1;
 }
 
-.footer-column h2 {
+.sobre h2 {
   color: #ffffff;
   font-size: 22px;
   line-height: 1.1;
@@ -29,110 +26,113 @@
   letter-spacing: 1px;
 }
 
-.footer-column h3 {
-  color: #ffffff;
-  font-size: 16px;
-  margin-bottom: 18px;
-}
-
-.footer-column p {
+.sobre p {
   color: #d6d6e8;
   font-size: 13px;
   line-height: 1.6;
   margin: 8px 0;
 }
 
-.footer-column a {
+.sobre a {
   display: block;
   color: #d6d6e8;
   text-decoration: none;
-
   font-size: 13px;
   margin-bottom: 10px;
-
   transition: 0.3s;
 }
 
-.footer-column a:hover {
+.sobre a {
   color: #8b82e8;
 }
 
+/* Contato */
+
+.contato {
+  flex: 1;
+}
+
+.contato p {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 18px;
+}
+
+.contato a {
+  display: block;
+  color: #d6d6e8;
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.contato a{
+  color: #8b82e8;
+}
 
 /* Redes sociais */
 
-.footer-social {
+.rede-social {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-
   border-top: 1px solid #3b3978;
-
   padding: 25px 0;
 }
 
-.footer-social h3 {
+.rede-social h3 {
   font-size: 16px;
   margin-bottom: 15px;
 }
 
-.social-links {
+.rede-social {
   display: flex;
   gap: 12px;
 }
 
-.social-links a {
+.rede-social a {
   color: #ffffff;
   text-decoration: none;
-
   border: 1px solid #8b82e8;
   border-radius: 5px;
-
   padding: 8px 15px;
-
   font-size: 13px;
-
   transition: 0.3s;
 }
 
-.social-links a:hover {
+.rede-social {
   background-color: #5146c7;
 }
 
-
 /* Parte final */
 
-.footer-bottom {
+.inferior {
   background-color: #0b0a32;
-
   text-align: center;
-
   padding: 18px;
 }
 
-.footer-bottom p {
+.inferior p {
   margin: 0;
-
   color: #aaa9c4;
-
   font-size: 12px;
 }
 
 
-/* Responsivo para celular */
 
 @media (max-width: 800px) {
-
-  .footer-container {
+  .container {
     flex-direction: column;
     gap: 30px;
   }
 
-  .footer-column {
+  .sobre,
+  .contato {
     text-align: center;
   }
 
-  .social-links {
+  .rede-social {
     justify-content: center;
   }
-
 }

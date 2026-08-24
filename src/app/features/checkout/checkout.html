@@ -1,1 +1,126 @@
+<<<<<<< HEAD
 <main class="checkout-page"><header><a class="brand" routerLink="/" aria-label="Voltar para a página inicial"><img src="/images/logoprojeto.jpeg" alt="Universo Literário" /></a><div class="header-actions"><app-conta-conectada /><a class="back-link" routerLink="/comprar">← Voltar para a sacola</a></div></header><section class="checkout-content">@if (compraConfirmada()) {<div class="success-card"><span class="success-icon">✓</span><p class="eyebrow">Pedido confirmado</p><h1>Parabéns pela sua compra!</h1><p>Seu pedido foi recebido com carinho. Em breve, suas novas histórias estarão a caminho.</p><a routerLink="/" class="primary-action">Voltar para a home</a></div>} @else {<div class="checkout-heading"><p class="eyebrow">Finalizar compra</p><h1>Quase lá: complete seus dados.</h1><p>Os campos são validados antes da confirmação do pedido.</p></div><form [formGroup]="formulario" (ngSubmit)="confirmarCompra()"><fieldset><legend>Dados pessoais</legend><div class="form-grid"><label>Nome completo<input formControlName="nome" autocomplete="name" /></label><label>E-mail<input type="email" formControlName="email" autocomplete="email" /></label>@if (formulario.controls.email.touched && formulario.controls.email.invalid) {<small>Informe um e-mail válido contendo @.</small>}<label>CPF<input formControlName="cpf" (input)="somenteNumeros('cpf')" inputmode="numeric" maxlength="11" /></label><label>Telefone<input formControlName="telefone" (input)="somenteNumeros('telefone')" inputmode="numeric" maxlength="11" /></label><small class="wide">CPF e telefone aceitam apenas números.</small></div></fieldset><fieldset><legend>Endereço de entrega</legend><div class="form-grid"><label>CEP<input formControlName="cep" (input)="somenteNumeros('cep')" (blur)="buscarCep()" inputmode="numeric" maxlength="8" placeholder="00000000" /></label><label>UF<input formControlName="uf" maxlength="2" /></label>@if (buscandoCep()) {<small class="wide">Buscando endereço…</small>} @if (erroCep()) {<small class="wide error">{{ erroCep() }}</small>}<label class="wide">Endereço<input formControlName="endereco" autocomplete="street-address" /></label><label>Número<input formControlName="numero" (input)="somenteNumeros('numero')" inputmode="numeric" /></label><label>Complemento<input formControlName="complemento" /></label><label>Bairro<input formControlName="bairro" /></label><label>Cidade<input formControlName="cidade" autocomplete="address-level2" /></label></div></fieldset><fieldset><legend>Pagamento</legend><div class="form-grid"><label class="wide">Nome no cartão<input formControlName="titular" autocomplete="cc-name" /></label><label class="wide">Número do cartão<input formControlName="cartao" (input)="somenteNumeros('cartao')" inputmode="numeric" maxlength="19" autocomplete="cc-number" /></label><label>Validade<input formControlName="validade" (input)="formatarValidade()" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp" /></label><label>CVV<input formControlName="cvv" (input)="somenteNumeros('cvv')" inputmode="numeric" maxlength="4" autocomplete="cc-csc" /></label></div></fieldset>@if (formulario.invalid && formulario.touched) {<div class="form-errors" role="alert"><strong>Não é possível liberar a compra ainda.</strong><span>Corrija: {{ errosFormulario().join(', ') }}.</span></div>}<button class="primary-action" type="submit">Confirmar compra</button></form>}</section></main>
+=======
+<main class="checkout-page">
+  <header>
+    <a class="brand" routerLink="/" aria-label="Voltar para a página inicial"
+      ><img src="/images/logoprojeto.jpeg" alt="Universo Literário"
+    /></a>
+    <div class="header-actions">
+      <app-conta-conectada /><a class="back-link" routerLink="/comprar">← Voltar para a sacola</a>
+    </div>
+  </header>
+  <section class="checkout-content">
+    @if (compraConfirmada()) {
+      <div class="success-card">
+        <span class="success-icon">✓</span>
+        <p class="eyebrow">Pedido confirmado</p>
+        <h1>Parabéns pela sua compra!</h1>
+        <p>
+          Seu pedido foi recebido com carinho. Em breve, suas novas histórias estarão a caminho.
+        </p>
+        <a routerLink="/" class="primary-action">Voltar para a home</a>
+      </div>
+    } @else {
+      <div class="checkout-heading">
+        <p class="eyebrow">Finalizar compra</p>
+        <h1>Quase lá: complete seus dados.</h1>
+        <p>Os campos são validados antes da confirmação do pedido.</p>
+      </div>
+      <form [formGroup]="formulario" (ngSubmit)="confirmarCompra()">
+        <fieldset>
+          <legend>Dados pessoais</legend>
+          <div class="form-grid">
+            <label>Nome completo<input formControlName="nome" autocomplete="name" /></label
+            ><label
+              >E-mail<input type="email" formControlName="email" autocomplete="email"
+            /></label>
+            @if (formulario.controls.email.touched && formulario.controls.email.invalid) {
+              <small>Informe um e-mail válido contendo @.</small>
+            }
+            <label
+              >CPF<input
+                formControlName="cpf"
+                (input)="somenteNumeros('cpf')"
+                inputmode="numeric"
+                maxlength="11" /></label
+            ><label
+              >Telefone<input
+                formControlName="telefone"
+                (input)="somenteNumeros('telefone')"
+                inputmode="numeric"
+                maxlength="11" /></label
+            ><small class="wide">CPF e telefone aceitam apenas números.</small>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Endereço de entrega</legend>
+          <div class="form-grid">
+            <label
+              >CEP<input
+                formControlName="cep"
+                (input)="somenteNumeros('cep')"
+                (blur)="buscarCep()"
+                inputmode="numeric"
+                maxlength="8"
+                placeholder="00000000" /></label
+            ><label>UF<input formControlName="uf" maxlength="2" /></label>
+            @if (buscandoCep()) {
+              <small class="wide">Buscando endereço…</small>
+            }
+            @if (erroCep()) {
+              <small class="wide error">{{ erroCep() }}</small>
+            }
+            <label class="wide"
+              >Endereço<input formControlName="endereco" autocomplete="street-address" /></label
+            ><label
+              >Número<input
+                formControlName="numero"
+                (input)="somenteNumeros('numero')"
+                inputmode="numeric" /></label
+            ><label>Complemento<input formControlName="complemento" /></label
+            ><label>Bairro<input formControlName="bairro" /></label
+            ><label>Cidade<input formControlName="cidade" autocomplete="address-level2" /></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Pagamento</legend>
+          <div class="form-grid">
+            <label class="wide"
+              >Nome no cartão<input formControlName="titular" autocomplete="cc-name" /></label
+            ><label class="wide"
+              >Número do cartão<input
+                formControlName="cartao"
+                (input)="somenteNumeros('cartao')"
+                inputmode="numeric"
+                maxlength="19"
+                autocomplete="cc-number" /></label
+            ><label
+              >Validade<input
+                formControlName="validade"
+                (input)="formatarValidade()"
+                placeholder="MM/AA"
+                maxlength="5"
+                autocomplete="cc-exp" /></label
+            ><label
+              >CVV<input
+                formControlName="cvv"
+                (input)="somenteNumeros('cvv')"
+                inputmode="numeric"
+                maxlength="4"
+                autocomplete="cc-csc"
+            /></label>
+          </div>
+        </fieldset>
+        @if (formulario.invalid && formulario.touched) {
+          <div class="form-errors" role="alert">
+            <strong>Não é possível liberar a compra ainda.</strong
+            ><span>Corrija: {{ errosFormulario().join(', ') }}.</span>
+          </div>
+        }
+        <button class="primary-action" type="submit">Confirmar compra</button>
+      </form>
+    }
+  </section>
+</main>
+>>>>>>> 1a10f9824745a97442b0950d105cc18e4a9d8335

@@ -1,7 +1,7 @@
 .footer {
-  background-color: #11104a;
+  background-color: #5146c7;
   color: #ffffff;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .container {
@@ -18,8 +18,8 @@
   flex: 1;
 }
 
-.sobre h2 {
-  color: #ffffff;
+.sobre h3 {
+  color: #FF0000;
   font-size: 22px;
   line-height: 1.1;
   margin-bottom: 18px;
@@ -68,7 +68,8 @@
 }
 
 .contato a{
-  color: #8b82e8;
+  color: #FFFFFF;
+ 
 }
 
 /* Redes sociais */

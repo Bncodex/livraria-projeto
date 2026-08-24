@@ -9,7 +9,6 @@ import { AuthService } from '../../../core/services/auth.service';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-@Component({ selector: 'app-login', imports: [ReactiveFormsModule, RouterLink], templateUrl: './login.html', styleUrl: './login.css' })
 export class Login {
   private readonly formBuilder = inject(FormBuilder);
   private readonly auth = inject(AuthService);
@@ -33,5 +32,4 @@ export class Login {
     }
     this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('returnUrl') || '/comprar');
   }
->>>>>>
 }

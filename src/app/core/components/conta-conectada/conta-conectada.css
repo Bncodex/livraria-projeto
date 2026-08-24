@@ -16,6 +16,7 @@
   text-overflow: ellipsis;
 }
 .session button,
+.session a,
 .login-link {
   border: 0;
   background: #6f42c1;
@@ -29,6 +30,7 @@
   cursor: pointer;
 }
 .session button:hover,
+.session a:hover,
 .login-link:hover {
   background: #54228c;
 }

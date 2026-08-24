@@ -35,5 +35,6 @@ export class Compras {
     { id: 19, titulo: 'Se Ele Estivesse Comigo', autor: 'Laura Nowlin', preco: 43.9, imagem: '/images/seeleestivesseaqui.jpeg' },
   ];
   adicionar(livro: Livro) { this.carrinho.adicionar(livro); }
+  diminuir(index: number) { this.carrinho.diminuir(index); }
   remover(index: number) { this.carrinho.remover(index); }
 }

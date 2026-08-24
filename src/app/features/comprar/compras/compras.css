@@ -37,9 +37,33 @@
 .cart-link {
   background: #193450;
   color: white;
-  padding: 11px 14px;
+  min-height: 40px;
+  box-sizing: border-box;
+  padding: 8px 11px;
   border-radius: 2px;
   margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.cart-link svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cart-link b {
+  display: grid;
+  min-width: 18px;
+  height: 18px;
+  place-items: center;
+  border-radius: 50%;
+  background: #c7a6ed;
+  color: #193450;
+  font-size: .68rem;
 }
 .shop-hero {
   background: #193450;
@@ -178,6 +202,36 @@ aside {
   font-size: 1.4rem;
   cursor: pointer;
   color: #6f42c1;
+}
+.quantity-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.quantity-controls button {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #d7dce1;
+  background: white;
+  color: #193450;
+  font-size: 1rem;
+}
+.quantity-controls span {
+  min-width: 16px;
+  margin: 0;
+  color: #193450;
+  text-align: center;
+  font-weight: 800;
+}
+.quantity-controls .remove-item {
+  margin-left: 3px;
+  border: 0;
+  background: transparent;
+  color: #6f42c1;
+  font-size: 1.4rem;
 }
 .total {
   display: flex;

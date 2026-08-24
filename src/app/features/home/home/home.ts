@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ContaConectada } from '../../../core/components/conta-conectada/conta-conectada';
-<<<<<<< HEAD
-=======
-
->>>>>>> 1a10f9824745a97442b0950d105cc18e4a9d8335
 
 @Component({
   selector: 'app-home',
@@ -15,30 +11,10 @@ import { ContaConectada } from '../../../core/components/conta-conectada/conta-c
 export class Home {
 
   readonly destaques = [
-    {
-      titulo: 'A biblioteca da meia-noite',
-      autor: 'Matt Haig',
-      cor: 'midnight',
-      tag: 'Mais vendido'
-    },
-    {
-      titulo: 'O sol é para todos',
-      autor: 'Harper Lee',
-      cor: 'sunset',
-      tag: 'Clássico'
-    },
-    {
-      titulo: 'Torto Arado',
-      autor: 'Itamar Vieira Junior',
-      cor: 'earth',
-      tag: 'Nacional'
-    },
-    {
-      titulo: 'Orgulho e Preconceito',
-      autor: 'Jane Austen',
-      cor: 'rose',
-      tag: 'Romance'
-    }
+    { titulo: 'Eu e Esse Meu Coração', autor: 'C. C. Hunter', imagem: '/images/eueessemeucoracao.jpeg' },
+    { titulo: 'Harry Potter e as Relíquias da Morte', autor: 'J. K. Rowling', imagem: '/images/harrypotter.jpeg' },
+    { titulo: 'João e o Pé de Feijão', autor: 'Igor Barbosa', imagem: '/images/joaoeopedefeijao.jpeg' },
+    { titulo: 'O Alienista', autor: 'Machado de Assis', imagem: '/images/oalienista.jpeg' },
   ];
 
 }

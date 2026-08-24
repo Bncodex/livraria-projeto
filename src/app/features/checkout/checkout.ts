@@ -35,5 +35,4 @@ export class Checkout {
     if (!this.pedidos.confirmar()) { this.erroCompra.set('Sua sacola está vazia. Adicione um livro antes de finalizar a compra.'); return; }
     this.compraConfirmada.set(true);
   }
->>>>
 }

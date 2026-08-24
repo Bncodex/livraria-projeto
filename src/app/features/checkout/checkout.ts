@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { catchError, finalize, of } from 'rxjs';
 import { ViaCepService } from '../../core/services/viacep.service';
 import { ContaConectada } from '../../core/components/conta-conectada/conta-conectada';
+import { PedidosService } from '../../core/services/pedidos.service';
 
 @Component({ selector: 'app-checkout', imports: [ReactiveFormsModule, RouterLink, ContaConectada], templateUrl: './checkout.html', styleUrl: './checkout.css' })
 export class Checkout {
-  private readonly formBuilder = inject(FormBuilder); private readonly viaCep = inject(ViaCepService);
-  readonly compraConfirmada = signal(false); readonly buscandoCep = signal(false); readonly erroCep = signal('');
+  private readonly formBuilder = inject(FormBuilder); private readonly viaCep = inject(ViaCepService); private readonly pedidos = inject(PedidosService);
+  readonly compraConfirmada = signal(false); readonly buscandoCep = signal(false); readonly erroCep = signal(''); readonly erroCompra = signal('');
   readonly formulario = this.formBuilder.nonNullable.group({
     nome: ['', Validators.required], email: ['', [Validators.required, Validators.email]], cpf: ['', [Validators.required, Validators.pattern(/^\d+$/)]], telefone: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
     endereco: ['', Validators.required], numero: ['', [Validators.required, Validators.pattern(/^\d+$/)]], complemento: [''], bairro: ['', Validators.required], cidade: ['', Validators.required], uf: ['', [Validators.required, Validators.pattern(/^[A-Za-z]{2}$/)]], cep: ['', [Validators.required, Validators.pattern(/^\d{8}$/)]],
@@ -29,5 +30,9 @@ export class Checkout {
       this.formulario.patchValue({ endereco: endereco.logradouro, complemento: endereco.complemento, bairro: endereco.bairro, cidade: endereco.localidade, uf: endereco.uf });
     });
   }
-  confirmarCompra(): void { if (this.formulario.invalid) { this.formulario.markAllAsTouched(); return; } this.compraConfirmada.set(true); }
+  confirmarCompra(): void {
+    if (this.formulario.invalid) { this.formulario.markAllAsTouched(); return; }
+    if (!this.pedidos.confirmar()) { this.erroCompra.set('Sua sacola está vazia. Adicione um livro antes de finalizar a compra.'); return; }
+    this.compraConfirmada.set(true);
+  }
 }

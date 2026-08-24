@@ -5,9 +5,12 @@
     /></a>
     <nav><a routerLink="/">Início</a><a routerLink="/sobre-nos">Sobre nós</a></nav>
     <div class="header-actions">
-      <app-conta-conectada /><span class="cart-link" aria-label="Itens na sacola"
-        >Sacola ({{ carrinho.quantidade() }})</span
-      >
+      <app-conta-conectada />
+      <a class="cart-link" [attr.aria-label]="carrinho.quantidade() + ' item(ns) no carrinho'">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H6.4M10 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" /></svg>
+        <span>Carrinho</span>
+        <b>{{ carrinho.quantidade() }}</b>
+      </a>
     </div>
   </header>
   <section class="shop-hero">
@@ -43,13 +46,18 @@
           Literário.
         </p>
       } @else {
-        @for (livro of carrinho.itens(); track $index) {
+        @for (item of carrinho.itens(); track item.livro.id) {
           <div class="bag-item">
             <div>
-              <strong>{{ livro.titulo }}</strong
-              ><span>{{ livro.preco | currency: 'BRL' }}</span>
+              <strong>{{ item.livro.titulo }}</strong
+              ><span>{{ item.livro.preco | currency: 'BRL' }} cada</span>
             </div>
-            <button (click)="remover($index)" aria-label="Remover livro">×</button>
+            <div class="quantity-controls" aria-label="Quantidade do livro">
+              <button (click)="diminuir($index)" aria-label="Diminuir quantidade">−</button>
+              <span>{{ item.quantidade }}</span>
+              <button (click)="adicionar(item.livro)" aria-label="Aumentar quantidade">+</button>
+              <button class="remove-item" (click)="remover($index)" aria-label="Remover livro">×</button>
+            </div>
           </div>
         }
         <div class="total">

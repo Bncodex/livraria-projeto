@@ -10,7 +10,7 @@
   </header>
 
   <section class="hero">
-    <img src="/images/hero-livraria.png" alt="Interior acolhedor de uma biblioteca" />
+    <img src="/images/saladeleitura.png" alt="Interior acolhedor de uma biblioteca" />
     <div class="hero-content">
       <p class="eyebrow">Um universo inteiro em cada página</p>
       <h1>Seu próximo mundo começa aqui.</h1>
@@ -35,8 +35,10 @@
     <div class="book-grid">
       @for (livro of destaques; track livro.titulo) {
         <article class="book-card">
-          <div class="cover" [class]="'cover ' + livro.cor"><span>{{ livro.titulo }}</span><small>{{ livro.autor }}</small></div>
-          <div class="book-info"><span class="tag">{{ livro.tag }}</span><h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p><strong>R$ 49,90</strong></div>
+          <img class="image-cover" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" style="display: block; width: 100%; height: 265px; object-fit: contain; background: #f5f2eb" />
+          <div class="book-info">
+            <h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p>
+          </div>
         </article>
       }
     </div>

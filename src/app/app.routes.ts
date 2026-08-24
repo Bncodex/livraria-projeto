@@ -28,6 +28,11 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'pedidos',
+    loadComponent: () => import('./features/pedidos/pedidos').then((m) => m.Pedidos),
+    canActivate: [authGuard],
+  },
+  {
     path: 'login',
     loadComponent: () => import('./features/auth/login/login').then((m) => m.Login),
   },

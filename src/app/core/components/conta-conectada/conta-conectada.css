@@ -10,6 +10,7 @@
   font-weight: 700;
   white-space: nowrap;
 }
+.guest-actions { display: inline-flex; align-items: center; gap: 8px; }
 .session-name {
   max-width: 145px;
   overflow: hidden;
@@ -29,6 +30,19 @@
     sans-serif;
   cursor: pointer;
 }
+.theme-toggle {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid #cbd3db !important;
+  border-radius: 50%;
+  background: transparent !important;
+  color: #32465e !important;
+}
+.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle:hover { background: #edf0f3 !important; color: #6f42c1 !important; }
 .session button:hover,
 .session a:hover,
 .login-link:hover {

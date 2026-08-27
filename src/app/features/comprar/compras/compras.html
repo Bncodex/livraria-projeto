@@ -23,6 +23,7 @@
         <h2>Todos os livros</h2>
         <span>{{ livros.length }} títulos selecionados</span>
       </div>
+
       <div class="catalog-grid">
         @for (livro of livros; track livro.id) {
           <article class="shop-book">
@@ -35,6 +36,7 @@
         }
       </div>
     </section>
+
     <aside id="carrinho">
       <div class="bag-head">
         <h2>Sua sacola</h2>

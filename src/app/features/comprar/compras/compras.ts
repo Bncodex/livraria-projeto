@@ -1,13 +1,14 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { CarrinhoFacade } from '../../../core/facades/carrinho.facade';
 import { Livro } from '../../../core/models/livro.model';
 import { ContaConectada } from '../../../core/components/conta-conectada/conta-conectada';
 
 @Component({
   selector: 'app-compras',
-  imports: [RouterLink, CurrencyPipe, ContaConectada],
+  imports: [RouterLink, CurrencyPipe, ContaConectada, FormsModule],
   templateUrl: './compras.html',
   styleUrl: './compras.css',
 })
@@ -34,6 +35,8 @@ export class Compras {
     { id: 18, titulo: 'O Senhor dos Anéis', autor: 'J. R. R. Tolkien', preco: 59.9, imagem: '/images/osenhordosaneis.jpeg' },
     { id: 19, titulo: 'Se Ele Estivesse Comigo', autor: 'Laura Nowlin', preco: 43.9, imagem: '/images/seeleestivesseaqui.jpeg' },
   ];
+
+
   adicionar(livro: Livro) { this.carrinho.adicionar(livro); }
   diminuir(index: number) { this.carrinho.diminuir(index); }
   remover(index: number) { this.carrinho.remover(index); }

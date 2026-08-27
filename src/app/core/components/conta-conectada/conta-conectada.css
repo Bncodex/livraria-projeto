@@ -1,0 +1,36 @@
+:host {
+  display: inline-flex;
+}
+.session {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #53677a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.session-name {
+  max-width: 145px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.session button,
+.session a,
+.login-link {
+  border: 0;
+  background: #6f42c1;
+  color: white;
+  padding: 8px 10px;
+  text-decoration: none;
+  font:
+    700 0.75rem Inter,
+    Arial,
+    sans-serif;
+  cursor: pointer;
+}
+.session button:hover,
+.session a:hover,
+.login-link:hover {
+  background: #54228c;
+}

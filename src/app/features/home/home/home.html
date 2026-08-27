@@ -6,11 +6,11 @@
       <a routerLink="/comprar">Comprar</a>
       <a routerLink="/sobre-nos">Sobre nós</a>
     </nav>
-    <a class="nav-cta" routerLink="/comprar">Explorar livros <span>→</span></a>
+    <app-conta-conectada />
   </header>
 
   <section class="hero">
-    <img src="/images/hero-livraria.png" alt="Interior acolhedor de uma biblioteca" />
+    <img src="/images/saladeleitura.png" alt="Interior acolhedor de uma biblioteca" />
     <div class="hero-content">
       <p class="eyebrow">Um universo inteiro em cada página</p>
       <h1>Seu próximo mundo começa aqui.</h1>
@@ -35,8 +35,10 @@
     <div class="book-grid">
       @for (livro of destaques; track livro.titulo) {
         <article class="book-card">
-          <div class="cover" [class]="'cover ' + livro.cor"><span>{{ livro.titulo }}</span><small>{{ livro.autor }}</small></div>
-          <div class="book-info"><span class="tag">{{ livro.tag }}</span><h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p><strong>R$ 49,90</strong></div>
+          <img class="image-cover" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" style="display: block; width: 100%; height: 265px; object-fit: contain; background: #f5f2eb" />
+          <div class="book-info">
+            <h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p>
+          </div>
         </article>
       }
     </div>
@@ -47,5 +49,50 @@
     <a routerLink="/sobre-nos" class="button dark">Conheça o Universo</a>
   </section>
 
-  <footer><a class="brand" routerLink="/"><img src="/images/logoprojeto.jpeg" alt="Universo Literário" /></a><p>Universo Literário: onde cada página acende uma estrela.</p></footer>
+<!--<footer class="footer">
+
+  <div class="container">
+
+    <div class="sobre">
+      <h2>UNIVERSO<br>LITERÁRIO</h2>
+
+      <p>
+        Livros que conectam galáxias e imaginários.
+        Histórias pensadas para quem ama descobrir novos mundos através da leitura.
+      </p>
+
+      <a href="#">Ver mais</a>
+    </div>
+
+    <div class="contato">
+      <p>✉️ E-mail</p>
+
+      <a href="mailto:universoliterario@gmail.com">
+        universoliterario@gmail.com
+      </a>
+    </div>
+
+    <div>
+      <h3>Redes sociais</h3>
+
+      <div class="rede-social">
+        <a
+          href="https://www.instagram.com/"
+          target="_blank"
+          title="Instagram">
+          Instagram
+        </a>
+      </div>
+    </div>
+
+  </div>
+<footer>
+  <div class="inferior">
+    <p>
+      © 2026 Universo Literário. Todos os direitos reservados.
+    </p>
+  </div>
+  </footer>
+
+</footer>-->
 </main>

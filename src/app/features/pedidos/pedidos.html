@@ -1,0 +1,39 @@
+<main class="orders-page">
+  <header>
+    <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"
+      ><img src="/images/logoprojeto.jpeg" alt="Universo Literário"
+    /></a>
+    <div class="header-actions">
+      <app-conta-conectada /><a routerLink="/comprar">Continuar comprando</a>
+    </div>
+  </header>
+  <section>
+    <p class="eyebrow">Minha conta</p>
+    <h1>Meus pedidos</h1>
+    @if (pedidos.quantidade() === 0) {
+      <div class="empty">
+        <p>Você ainda não realizou nenhum pedido.</p>
+        <a routerLink="/comprar">Escolher livros</a>
+      </div>
+    } @else {
+      <div class="order-list">
+        @for (pedido of pedidos.pedidos(); track pedido.id) {
+          <article>
+            <div class="order-head">
+              <div>
+                <span>Pedido #{{ pedido.id }}</span>
+                <p>{{ pedido.criadoEm | date: 'dd/MM/yyyy, HH:mm' }}</p>
+              </div>
+              <strong>{{ pedido.total | currency: 'BRL' }}</strong>
+            </div>
+            <ul>
+              @for (item of pedido.itens; track item.livro.id) {
+                <li>{{ item.quantidade }}× {{ item.livro.titulo }}</li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+    }
+  </section>
+</main>

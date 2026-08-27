@@ -1,58 +1,116 @@
-<section class="sobre-nos">
-  <div class="sobre-container">
-    <div class="sobre-texto">
-      <span class="titulo-pequeno">SOBRE O UNIVERSO LITERÁRIO</span>
+<main class="sobre-page">
+  <header class="topbar">
+    <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário">
+      <img src="/images/logoprojeto.jpeg" alt="Universo Literário" />
+    </a>
 
-      <h1>
-        Mais do que uma livraria,
-        <span>um lugar para histórias.</span>
-      </h1>
+    <nav aria-label="Navegação principal">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Início
+      </a>
 
-      <p>
-        O Universo Literário nasceu do amor pelos livros e da vontade de aproximar pessoas de histórias
-        que podem transformar momentos, pensamentos e vidas.
-      </p>
+      <a routerLink="/comprar" routerLinkActive="active">
+        Comprar
+      </a>
 
-      <p>
-        Acreditamos que cada leitor possui uma história própria, e que existe um livro esperando
-        para fazer parte dela.
-      </p>
+      <a routerLink="/sobre-nos" routerLinkActive="active">
+        Sobre nós
+      </a>
+    </nav>
+  </header>
 
-      <p>
-        Por isso, buscamos oferecer uma experiência acolhedora, simples e especial para quem ama
-        descobrir novos mundos através da leitura.
-      </p>
+  <section class="sobre-nos">
+    <div class="sobre-container">
 
-      <div class="valores">
-        <div class="valor">
-          <span>01</span>
-          <h3>Paixão</h3>
-          <p>Amamos livros e tudo aquilo que eles despertam.</p>
-        </div>
+      <div class="sobre-texto">
 
-        <div class="valor">
-          <span>02</span>
-          <h3>Curadoria</h3>
-          <p>Escolhemos histórias que realmente merecem ser lidas.</p>
-        </div>
+        <span class="titulo-pequeno">
+          SOBRE O UNIVERSO LITERÁRIO
+        </span>
 
-        <div class="valor">
-          <span>03</span>
-          <h3>Leitores</h3>
-          <p>Nossa inspiração são as pessoas que vivem cada história.</p>
+        <h1>
+          Um espaço para quem gosta de
+          <span>boas histórias.</span>
+        </h1>
+
+        <p>
+          O Universo Literário nasceu com uma ideia simples: reunir livros,
+          leitores e novas descobertas em um só lugar.
+        </p>
+
+        <p>
+          Sabemos que escolher um livro nem sempre é fácil. Às vezes você já
+          sabe exatamente o que procura. Outras vezes, entra apenas para dar
+          uma olhada e acaba encontrando uma história que nem imaginava
+          procurar. E é justamente essa parte que torna a experiência de
+          encontrar um novo livro tão interessante.
+        </p>
+
+        <p>
+          No Universo Literário, você pode explorar diferentes gêneros,
+          autores, clássicos e lançamentos, encontrando opções para diferentes
+          gostos e momentos.
+        </p>
+
+        <p>
+          Nosso objetivo é tornar essa busca mais simples, agradável e
+          especial, criando um espaço onde cada leitor possa descobrir sua
+          próxima leitura.
+          Quem sabe a sua próxima história não está por aqui?
+        </p>
+
+        <div class="valores">
+
+          <div class="valor">
+            <span>01</span>
+            <h3>Livros</h3>
+            <p>
+              Uma variedade de títulos e gêneros para diferentes gostos
+              e momentos.
+            </p>
+          </div>
+
+          <div class="valor">
+            <span>02</span>
+            <h3>Descobertas</h3>
+            <p>
+              Explore novas histórias e encontre livros que talvez você
+              nem soubesse que estava procurando.
+            </p>
+          </div>
+
+          <div class="valor">
+            <span>03</span>
+            <h3>Leitores</h3>
+            <p>
+              Um espaço pensado para diferentes perfis, gostos e formas
+              de viver a leitura.
+            </p>
+          </div>
+
         </div>
       </div>
+
+      <div class="sobre-imagem">
+
+        <div class="imagem">
+          <img
+            src="/images/interiordouniversoliterario.jpeg"
+            alt="Interior do Universo Literário"
+          />
+        </div>
+
+        <div class="frase">
+          <span>“</span>
+          Algumas histórias a gente escolhe. Outras simplesmente encontram a gente.
+        </div>
+
+      </div>
+
     </div>
-
-    <div class="sobre-imagem">
-      <div class="imagem">
-        <img src="../../../../../images/interiordouniversoliterario.jpeg" alt="Interior do Universo Literário" />
-      </div>
-
-      <div class="frase">
-        <span>“</span>
-        Uma boa história pode mudar a forma como enxergamos o mundo.
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>

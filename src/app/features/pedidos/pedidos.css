@@ -1,0 +1,118 @@
+:host {
+  display: block;
+}
+.orders-page {
+  min-height: 100vh;
+  background: #fffdf8;
+  color: #193450;
+}
+.orders-page header {
+  max-width: 1080px;
+  min-height: 98px;
+  padding: 0 28px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand img {
+  display: block;
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.header-actions > a {
+  color: #53677a;
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.orders-page section {
+  max-width: 760px;
+  padding: 55px 24px 80px;
+  margin: auto;
+}
+.eyebrow {
+  margin: 0 0 10px;
+  color: #6f42c1;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+.orders-page h1 {
+  margin: 0 0 28px;
+  font:
+    700 clamp(2.2rem, 5vw, 3.5rem)/1.1 Georgia,
+    serif;
+}
+.order-list {
+  display: grid;
+  gap: 16px;
+}
+.order-list article,
+.empty {
+  padding: 24px;
+  background: white;
+  box-shadow: 0 9px 28px rgba(25, 52, 80, 0.1);
+}
+.order-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.order-head span {
+  font-weight: 800;
+}
+.order-head p {
+  margin: 5px 0 0;
+  color: #68778a;
+  font-size: 0.82rem;
+}
+.order-head strong {
+  color: #54228c;
+}
+.order-list ul {
+  margin: 20px 0 0;
+  padding: 15px 0 0 20px;
+  border-top: 1px solid #e8e8e2;
+  color: #53677a;
+  line-height: 1.8;
+}
+.empty p {
+  color: #68778a;
+}
+.empty a {
+  display: inline-block;
+  padding: 11px 15px;
+  background: #6f42c1;
+  color: white;
+  font-size: 0.83rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+@media (max-width: 600px) {
+  .orders-page header {
+    min-height: 84px;
+    padding: 11px 18px;
+    align-items: flex-start;
+  }
+  .brand img {
+    width: 63px;
+    height: 63px;
+  }
+  .header-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .orders-page section {
+    padding: 35px 18px 60px;
+  }
+}

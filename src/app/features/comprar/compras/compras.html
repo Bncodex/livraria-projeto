@@ -1,7 +1,7 @@
 <main class="shop-page">
   <header>
     <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"
-      ><img src="/images/logoprojeto.jpeg" alt="Universo Literário"
+      ><img src="/images/logoprojeto-removebg-preview.png" alt="Universo Literário"
     /></a>
     <nav><a routerLink="/">Início</a><a routerLink="/sobre-nos">Sobre nós</a></nav>
     <div class="header-actions">
@@ -39,14 +39,14 @@
 
     <aside id="carrinho">
       <div class="bag-head">
-        <h2>Sua sacola</h2>
-        <span>{{ carrinho.quantidade() }} item(ns)</span>
+        <div><p>Seu universo</p><h2>Sua sacola</h2></div>
+        <span class="bag-count">{{ carrinho.quantidade() }} item(ns)</span>
       </div>
       @if (carrinho.quantidade() === 0) {
-        <p class="empty">
-          Sua sacola ainda está vazia. Escolha uma história e comece a sua viagem pelo Universo
-          Literário.
-        </p>
+        <div class="empty">
+          <span class="empty-icon" aria-hidden="true">✦</span>
+          <p>Sua sacola ainda está vazia. Escolha uma história e comece a sua viagem pelo Universo Literário.</p>
+        </div>
       } @else {
         @for (item of carrinho.itens(); track item.livro.id) {
           <div class="bag-item">
@@ -66,6 +66,7 @@
           <span>Total</span><strong>{{ carrinho.total() | currency: 'BRL' }}</strong>
         </div>
         <a class="checkout" routerLink="/checkout">Finalizar compra</a>
+        <p class="bag-note">Frete calculado na próxima etapa.</p>
       }
     </aside>
   </div>

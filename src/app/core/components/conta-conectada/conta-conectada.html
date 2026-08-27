@@ -1,8 +1,13 @@
 @if (auth.estaLogado() && auth.usuario(); as usuario) {
   <div class="session">
     <span class="session-name" title="Conta conectada">Olá, {{ usuario.nome }}</span
-    ><a routerLink="/pedidos">Pedidos</a><button type="button" (click)="sair()">Sair</button>
+    ><a routerLink="/pedidos">Pedidos</a><button type="button" (click)="sair()">Sair</button
+    ><button class="theme-toggle" type="button" (click)="tema.alternar()" [attr.aria-label]="tema.tema() === 'claro' ? 'Ativar modo escuro' : 'Ativar modo claro'" [title]="tema.tema() === 'claro' ? 'Ativar modo escuro' : 'Ativar modo claro'">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5" /><path fill="currentColor" stroke="none" d="M12 4.5a7.5 7.5 0 0 0 0 15Z" /></svg>
+    </button>
   </div>
 } @else {
-  <a class="login-link" routerLink="/login">Entrar</a>
+  <div class="guest-actions"><a class="login-link" routerLink="/login">Entrar</a><button class="theme-toggle" type="button" (click)="tema.alternar()" [attr.aria-label]="tema.tema() === 'claro' ? 'Ativar modo escuro' : 'Ativar modo claro'" [title]="tema.tema() === 'claro' ? 'Ativar modo escuro' : 'Ativar modo claro'">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5" /><path fill="currentColor" stroke="none" d="M12 4.5a7.5 7.5 0 0 0 0 15Z" /></svg>
+  </button></div>
 }

@@ -30,6 +30,6 @@ export class Login {
       this.erro.set(erro);
       return;
     }
-    this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('returnUrl') || '/comprar');
+    this.router.navigateByUrl(this.route.snapshot.queryParamMap.get('returnUrl') || '/');
   }
 }

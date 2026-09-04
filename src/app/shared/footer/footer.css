@@ -1,138 +1,111 @@
 .footer {
-  background-color: #11104a;
+  background-color: #54228c;
   color: #ffffff;
+  width: 100%;
   margin-top: 40px;
+  padding: 40px 0 0;
 }
 
+/* Layout em 3 colunas lado a lado no desktop */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  gap: 50px;
-  padding: 45px 0 35px;
+  align-items: flex-start;
+  text-align: left;
+  gap: 40px;
+  padding-bottom: 40px;
 }
 
-.sobre {
-  flex: 1;
-}
-
-.sobre h2 {
-  color: #ffffff;
-  font-size: 22px;
-  line-height: 1.1;
-  margin-bottom: 18px;
-  letter-spacing: 1px;
-}
-
-.sobre p {
-  color: #d6d6e8;
-  font-size: 13px;
-  line-height: 1.6;
-  margin: 8px 0;
-}
-
-.sobre a {
+/* Tamanho do Logo */
+.sobre img,
+.footer img {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
   display: block;
-  color: #d6d6e8;
-  text-decoration: none;
-  font-size: 13px;
-  margin-bottom: 10px;
-  transition: 0.3s;
 }
 
-.sobre a {
-  color: #8b82e8;
-}
-
-/* Contato */
-
-.contato {
-  flex: 1;
-}
-
-.contato p {
-  color: #ffffff;
-  font-size: 16px;
-  margin-bottom: 18px;
-}
-
-.contato a {
-  display: block;
-  color: #d6d6e8;
-  text-decoration: none;
-  font-size: 13px;
-  margin-bottom: 10px;
-  transition: 0.3s;
-}
-
-.contato a{
-  color: #8b82e8;
-}
-
-/* Redes sociais */
-
-.rede-social {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-top: 1px solid #3b3978;
-  padding: 25px 0;
-}
-
+/* Fontes maiores para os Títulos */
+.sobre h3,
+.contato h3,
 .rede-social h3 {
-  font-size: 16px;
-  margin-bottom: 15px;
+  color: #ffffff !important;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 
-.rede-social {
-  display: flex;
-  gap: 12px;
+/* Fontes maiores para Textos */
+.sobre p,
+.contato p {
+  color: #e2d9f3;
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 380px;
+  margin: 0 0 15px;
 }
 
+/* Botões com fontes ajustadas */
+.btn-inicio,
 .rede-social a {
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
   color: #ffffff;
   text-decoration: none;
-  border: 1px solid #8b82e8;
-  border-radius: 5px;
-  padding: 8px 15px;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
   transition: 0.3s;
+  margin-top: 5px;
+}
+
+.btn-inicio:hover,
+.rede-social a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .rede-social {
-  background-color: #5146c7;
+  border-top: none;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* Parte final */
-
+/* Faixa de Copyright */
 .inferior {
-  background-color: #0b0a32;
+  width: 100%;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  background-color: #3b1666;
   text-align: center;
-  padding: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .inferior p {
   margin: 0;
-  color: #aaa9c4;
-  font-size: 12px;
+  color: #d1c4e9;
+  font-size: 13px;
 }
 
-
-
-@media (max-width: 800px) {
+/* Ajuste automático para telas pequenas (Celulares) */
+@media (max-width: 768px) {
   .container {
     flex-direction: column;
-    gap: 30px;
-  }
-
-  .sobre,
-  .contato {
+    align-items: center;
     text-align: center;
   }
 
+  .sobre p,
   .rede-social {
-    justify-content: center;
+    align-items: center;
   }
 }

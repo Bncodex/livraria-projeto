@@ -3,6 +3,9 @@
   background: #fffdf8;
   color: #193450;
 }
+.shop-page header,
+.shop-book,
+aside { transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease; }
 .shop-page header {
   max-width: 1180px;
   margin: auto;
@@ -70,7 +73,10 @@
   color: white;
   text-align: center;
   padding: 68px 24px;
+  position: relative;
+  overflow: hidden;
 }
+.shop-hero::after { content: '✦'; position: absolute; right: 9%; top: 16%; color: rgba(199, 166, 237, .22); font-size: 5.5rem; animation: soft-float 5s ease-in-out infinite; }
 .shop-hero p {
   color: #c7a6ed;
   text-transform: uppercase;
@@ -119,8 +125,14 @@ aside h2 {
 .shop-book {
   padding: 12px;
   background: white;
+  border: 1px solid transparent;
   box-shadow: 0 8px 23px rgba(17, 42, 66, 0.1);
+  cursor: pointer;
+  transform: translateY(0);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
+.shop-book:hover { transform: translateY(-5px); border-color: #ddcbed; box-shadow: 0 15px 30px rgba(17, 42, 66, .14); }
+.shop-book:focus-visible { outline: 3px solid #c7a6ed; outline-offset: 3px; }
 .cover {
   width: 100%;
   height: 300px;
@@ -152,11 +164,17 @@ aside h2 {
   color: white;
   font-weight: 800;
   cursor: pointer;
+  transition: background-color .2s ease, transform .2s ease;
 }
 .shop-book button:hover,
 .checkout:hover {
   background: #54228c;
 }
+.shop-book button:active,
+.checkout:active { transform: translateY(1px); }
+.book-actions { display: grid; grid-template-columns: .92fr 1.25fr; gap: 8px; }
+.shop-book .details-button { background: #f2ecfa; color: #5e369c; }
+.shop-book .details-button:hover { background: #e4d8f3; }
 aside {
   position: sticky;
   top: 18px;
@@ -258,6 +276,23 @@ aside {
   box-shadow: 0 7px 14px rgba(111, 66, 193, .2);
 }
 .bag-note { margin: 12px 0 0; color: #74808c; font-size: .71rem; text-align: center; }
+.modal-overlay { position: fixed; z-index: 1000; inset: 0; display: grid; place-items: center; padding: 24px; background: rgba(11, 25, 42, .65); backdrop-filter: blur(5px); animation: fade-in .22s ease-out both; }
+.book-modal { position: relative; width: min(690px, 100%); display: grid; grid-template-columns: minmax(180px, 230px) 1fr; gap: 28px; padding: 28px; background: #fffdf8; color: #193450; border: 1px solid rgba(199, 166, 237, .65); border-radius: 12px; box-shadow: 0 26px 70px rgba(5, 15, 27, .38); animation: modal-in .3s cubic-bezier(.2, .8, .2, 1) both; }
+.book-modal > img { width: 100%; height: 315px; object-fit: contain; background: #f3efe7; }
+.modal-content { align-self: center; }
+.modal-kicker { margin: 0 0 9px; color: #6f42c1; font-size: .68rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.modal-content h2 { margin: 0; font: 700 clamp(1.8rem, 4vw, 2.4rem)/1.05 Georgia, serif; }
+.modal-author { margin: 9px 0 20px; color: #68778a; font-size: .9rem; }
+.modal-synopsis { margin: 0; color: #40566c; font-size: .92rem; line-height: 1.65; }
+.modal-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 25px; padding-top: 18px; border-top: 1px solid #e5deeb; }
+.modal-footer strong { color: #54228c; font: 700 1.25rem Georgia, serif; }
+.modal-footer button { border: 0; padding: 11px 15px; background: #6f42c1; color: white; font: 800 .8rem Inter, Arial, sans-serif; cursor: pointer; transition: background-color .2s ease, transform .2s ease; }
+.modal-footer button:hover { background: #54228c; transform: translateY(-1px); }
+.modal-close { position: absolute; z-index: 1; top: 10px; right: 10px; display: grid; width: 34px; height: 34px; padding: 0; place-items: center; border: 0; border-radius: 50%; background: rgba(25, 52, 80, .08); color: #193450; font-size: 1.6rem; line-height: 1; cursor: pointer; transition: background-color .2s ease, transform .2s ease; }
+.modal-close:hover { background: #eee4f8; transform: rotate(90deg); }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-in { from { opacity: 0; transform: translateY(14px) scale(.975); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes soft-float { 50% { transform: translateY(-9px) rotate(8deg); } }
 @media (max-width: 760px) {
   .shop-page header {
     height: auto;
@@ -292,6 +327,15 @@ aside {
     width: 76px;
     height: 76px;
   }
+  .book-modal { grid-template-columns: 130px 1fr; gap: 18px; padding: 22px; }
+  .book-modal > img { height: 235px; }
+}
+@media (max-width: 520px) {
+  .modal-overlay { padding: 14px; align-items: end; }
+  .book-modal { grid-template-columns: 1fr; max-height: calc(100vh - 28px); overflow: auto; gap: 16px; }
+  .book-modal > img { width: 130px; height: 180px; }
+  .modal-footer { align-items: stretch; flex-direction: column; }
+  .modal-footer button { width: 100%; }
 }
 .checkout {
   display: block;

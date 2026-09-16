@@ -26,12 +26,12 @@
 
       <div class="catalog-grid">
         @for (livro of livros; track livro.id) {
-          <article class="shop-book">
+          <article class="shop-book" tabindex="0" role="button" [attr.aria-label]="'Ver detalhes de ' + livro.titulo" (click)="abrirDetalhes(livro)" (keydown.enter)="abrirDetalhes(livro)" (keydown.space)="abrirDetalhes(livro); $event.preventDefault()">
             <img class="cover" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" />
             <h3>{{ livro.titulo }}</h3>
             <p>{{ livro.autor }}</p>
             <strong>{{ livro.preco | currency: 'BRL' }}</strong
-            ><button (click)="adicionar(livro)">Adicionar à sacola</button>
+            ><div class="book-actions"><button class="details-button" type="button" (click)="abrirDetalhes(livro); $event.stopPropagation()">Ver detalhes</button><button type="button" (click)="adicionar(livro); $event.stopPropagation()">Adicionar à sacola</button></div>
           </article>
         }
       </div>
@@ -71,3 +71,19 @@
     </aside>
   </div>
 </main>
+
+@if (livroSelecionado(); as livro) {
+  <div class="modal-overlay" (click)="fecharDetalhes()">
+    <section class="book-modal" role="dialog" aria-modal="true" [attr.aria-labelledby]="'book-title-' + livro.id" (click)="$event.stopPropagation()">
+      <button class="modal-close" type="button" (click)="fecharDetalhes()" aria-label="Fechar detalhes do livro">×</button>
+      <img [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" />
+      <div class="modal-content">
+        <p class="modal-kicker">{{ livro.genero }}</p>
+        <h2 [id]="'book-title-' + livro.id">{{ livro.titulo }}</h2>
+        <p class="modal-author">por {{ livro.autor }}</p>
+        <p class="modal-synopsis">{{ livro.sinopse }}</p>
+        <div class="modal-footer"><strong>{{ livro.preco | currency: 'BRL' }}</strong><button type="button" (click)="adicionar(livro); fecharDetalhes()">Adicionar à sacola</button></div>
+      </div>
+    </section>
+  </div>
+}

@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/angular';
 
 import { AuthService } from '../../../core/services/auth.service';
 import { Login } from './login';
-
+// Angular library testa se o login está sendo autenticado e se está sendo levado para a Home.
 describe('Login', () => {
   beforeEach(() => localStorage.clear());
 

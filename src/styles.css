@@ -3,30 +3,30 @@ html { scroll-behavior: smooth; }
 body { margin: 0; font-family: Inter, Arial, sans-serif; color: #192b42; background: #fffdf8; }
 a { color: inherit; }
 
-html[data-tema='escuro'] body { color: #e7edf4; background: #121923; }
+html[data-tema='escuro'] body { color: #e8eef6; background: #101a29; }
 html[data-tema='escuro'] .topbar,
 html[data-tema='escuro'] .shop-page,
 html[data-tema='escuro'] .shop-page header,
 html[data-tema='escuro'] .checkout-page,
-html[data-tema='escuro'] .orders-page { background: #121923; color: #e7edf4; }
+html[data-tema='escuro'] .orders-page { background: #101a29; color: #e8eef6; }
 html[data-tema='escuro'] .sobre-page,
-html[data-tema='escuro'] .sobre-nos { background: #182230; }
-html[data-tema='escuro'] .login-page { background: #0f1722; }
-html[data-tema='escuro'] .login-card { background: #202c3a; color: #e7edf4; }
-html[data-tema='escuro'] .login-card > p { color: #b9c7d6; }
-html[data-tema='escuro'] .accounts { background: #28384a; color: #e5d7f8; }
+html[data-tema='escuro'] .sobre-nos { background: #142033; }
+html[data-tema='escuro'] .login-page { background: #101a29; }
+html[data-tema='escuro'] .login-card { background: #1b2a3d; color: #e8eef6; }
+html[data-tema='escuro'] .login-card > p { color: #afbdcd; }
+html[data-tema='escuro'] .accounts { background: #22364d; color: #eadcff; }
 html[data-tema='escuro'] .home-link { color: #c7d3df; }
 html[data-tema='escuro'] nav a,
 html[data-tema='escuro'] .shop-page nav a,
 html[data-tema='escuro'] .cart-link { color: #dbe5ef; }
-html[data-tema='escuro'] .theme-toggle { border-color: #53677a !important; color: #e7edf4 !important; }
-html[data-tema='escuro'] .theme-toggle:hover { background: #28384a !important; color: #d9baff !important; }
+html[data-tema='escuro'] .theme-toggle { border-color: #4e637a !important; color: #e8eef6 !important; }
+html[data-tema='escuro'] .theme-toggle:hover { background: #22364d !important; color: #d9baff !important; }
 html[data-tema='escuro'] .shop-book,
 html[data-tema='escuro'] aside,
 html[data-tema='escuro'] form,
 html[data-tema='escuro'] .success-card,
 html[data-tema='escuro'] .order-list article,
-html[data-tema='escuro'] .empty { background: #202c3a; color: #e7edf4; box-shadow: 0 8px 23px rgba(0, 0, 0, .25); }
+html[data-tema='escuro'] .empty { background: #1b2a3d; color: #e8eef6; box-shadow: 0 8px 23px rgba(0, 0, 0, .25); }
 html[data-tema='escuro'] .shop-book p,
 html[data-tema='escuro'] .catalog-title span,
 html[data-tema='escuro'] .bag-head span,
@@ -53,3 +53,20 @@ html[data-tema='escuro'] .valor h3 { color: #f1f5f9; }
 html[data-tema='escuro'] input { background: #17212d; border-color: #53677a; color: #f1f5f9; }
 html[data-tema='escuro'] label { color: #d6e0ea; }
 html[data-tema='escuro'] .cover { background: #e9e4d8; }
+html[data-tema='escuro'] .book-modal { background: #1b2a3d; color: #e8eef6; }
+html[data-tema='escuro'] .modal-author,
+html[data-tema='escuro'] .modal-synopsis { color: #afbdcd; }
+html[data-tema='escuro'] .modal-footer { border-color: #30445a; }
+html[data-tema='escuro'] .modal-close { background: #2a4058; color: #f0f5fa; }
+html[data-tema='escuro'] .modal-close:hover { background: #40546d; }
+html[data-tema='escuro'] .shop-book { border-color: #2d4560; }
+html[data-tema='escuro'] .shop-book .details-button { background: #293c54; color: #d9baff; }
+html[data-tema='escuro'] .shop-book .details-button:hover { background: #354b67; }
+html[data-tema='escuro'] .visit { background: #1d3044; }
+html[data-tema='escuro'] .visit h2 { color: #f1f5f9; }
+html[data-tema='escuro'] .visit p:last-child { color: #b9c7d6; }
+html[data-tema='escuro'] .valores { border-color: #334a63; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

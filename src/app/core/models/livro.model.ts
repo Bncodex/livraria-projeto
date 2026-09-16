@@ -4,4 +4,6 @@ export interface Livro {
   autor: string;
   preco: number;
   imagem: string;
+  sinopse: string;
+  genero: string;
 }

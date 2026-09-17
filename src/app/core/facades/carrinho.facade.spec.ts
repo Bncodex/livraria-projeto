@@ -12,6 +12,8 @@ describe('CarrinhoFacade', () => {
     autor: 'Antoine de Saint-Exupéry',
     preco: 39.9,
     imagem: 'pequeno-principe.jpg',
+    genero: 'Fábula poética',
+    sinopse: 'Uma viagem sobre amizade e o essencial.',
   };
 
   beforeEach(() => {

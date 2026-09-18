@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, HostListener, inject, signal } from '@angular/core';
+import { Component, HostListener, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CarrinhoFacade } from '../../../core/facades/carrinho.facade';
@@ -15,6 +15,10 @@ import { ContaConectada } from '../../../core/components/conta-conectada/conta-c
 export class Compras {
   readonly carrinho = inject(CarrinhoFacade);
   readonly livroSelecionado = signal<Livro | null>(null);
+  readonly busca = signal('');
+  readonly categoriaAtiva = signal('Todos');
+  readonly aviso = signal('');
+  readonly categorias = ['Todos', 'Romance', 'Fantasia', 'Literatura brasileira', 'Clássicos', 'Infantojuvenil'];
   readonly livros: Livro[] = [
     { id: 1, titulo: '1984', autor: 'George Orwell', preco: 39.9, imagem: '/images/1984.jpeg', genero: 'Distopia clássica', sinopse: 'Em uma sociedade vigiada pelo Grande Irmão, Winston Smith começa a questionar as verdades impostas pelo Estado e arrisca tudo em busca de liberdade.' },
     { id: 2, titulo: 'A Cinco Passos de Você', autor: 'Rachael Lippincott', preco: 42.9, imagem: '/images/acincopassosdevoce.jpeg', genero: 'Romance contemporâneo', sinopse: 'Stella e Will vivem no mesmo hospital e se apaixonam, mas precisam manter distância para proteger a saúde um do outro.' },
@@ -37,12 +41,33 @@ export class Compras {
     { id: 19, titulo: 'Se Ele Estivesse Comigo', autor: 'Laura Nowlin', preco: 43.9, imagem: '/images/seeleestivesseaqui.jpeg', genero: 'Romance dramático', sinopse: 'Outono revisita sua amizade com Finn e imagina os caminhos que poderiam ter seguido, entre afeto, escolhas e despedidas.' },
   ];
 
+  readonly livrosFiltrados = computed(() => {
+    const termo = this.normalizar(this.busca());
+    const categoria = this.categoriaAtiva();
+    return this.livros.filter((livro) => {
+      const combinaBusca = !termo || this.normalizar(`${livro.titulo} ${livro.autor} ${livro.genero}`).includes(termo);
+      const genero = livro.genero.toLowerCase();
+      const combinaCategoria = categoria === 'Todos'
+        || (categoria === 'Clássicos' && genero.includes('clássic'))
+        || genero.includes(categoria.toLowerCase());
+      return combinaBusca && combinaCategoria;
+    });
+  });
 
-  adicionar(livro: Livro) { this.carrinho.adicionar(livro); }
+  adicionar(livro: Livro) {
+    this.carrinho.adicionar(livro);
+    this.aviso.set(`${livro.titulo} foi adicionado à sacola.`);
+    setTimeout(() => this.aviso.set(''), 2600);
+  }
   diminuir(index: number) { this.carrinho.diminuir(index); }
   remover(index: number) { this.carrinho.remover(index); }
   abrirDetalhes(livro: Livro) { this.livroSelecionado.set(livro); }
   fecharDetalhes() { this.livroSelecionado.set(null); }
+  selecionarCategoria(categoria: string) { this.categoriaAtiva.set(categoria); }
+
+  private normalizar(valor: string) {
+    return valor.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+  }
 
   @HostListener('document:keydown.escape')
   aoPressionarEsc() { this.fecharDetalhes(); }

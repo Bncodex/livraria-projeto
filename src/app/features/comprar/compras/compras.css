@@ -1,7 +1,7 @@
 .shop-page {
   min-height: 100vh;
-  background: #fffdf8;
-  color: #193450;
+  background: var(--paper);
+  color: var(--ink);
 }
 .shop-page header,
 .shop-book,
@@ -22,21 +22,26 @@ aside { transition: background-color .25s ease, border-color .25s ease, box-shad
 }
 .shop-page .brand img {
   display: block;
-  width: 88px;
-  height: 88px;
+  width: 62px;
+  height: 62px;
   object-fit: contain;
 }
+.shop-page .brand { gap: 9px; }
+.shop-page .brand > span { display: flex; flex-direction: column; color: var(--ink); font: 400 .75rem/1.12 var(--font-display); letter-spacing: .14em; text-transform: uppercase; }
+.shop-page .brand > span strong { color: var(--brand); font-size: .94rem; font-weight: 400; letter-spacing: .07em; }
 .shop-page nav {
   display: flex;
   gap: 23px;
 }
 .shop-page nav a,
 .cart-link {
-  color: #53677a;
+  color: var(--ink-soft);
   font-size: 0.83rem;
   font-weight: 700;
   text-decoration: none;
 }
+.shop-page nav a { position: relative; padding: 27px 0; }
+.shop-page nav a:hover, .shop-page nav a.active { color: var(--brand); }
 .cart-link {
   background: #193450;
   color: white;
@@ -69,12 +74,13 @@ aside { transition: background-color .25s ease, border-color .25s ease, box-shad
   font-size: 0.68rem;
 }
 .shop-hero {
-  background: #193450;
+  background: radial-gradient(circle at 82% 28%, #3a3668 0, transparent 27%), #162d46;
   color: white;
   text-align: center;
-  padding: 68px 24px;
+  padding: 76px 24px 92px;
   position: relative;
-  overflow: hidden;
+  z-index: 3;
+  overflow: visible;
 }
 .shop-hero::after { content: '✦'; position: absolute; right: 9%; top: 16%; color: rgba(199, 166, 237, .22); font-size: 5.5rem; animation: soft-float 5s ease-in-out infinite; }
 .shop-hero p {
@@ -87,12 +93,21 @@ aside { transition: background-color .25s ease, border-color .25s ease, box-shad
 .shop-hero h1 {
   margin: 10px 0 0;
   font:
-    700 clamp(2.3rem, 4vw, 4rem)/1 Georgia,
-    serif;
+    400 clamp(2.3rem, 4vw, 4rem)/1 var(--font-display);
+  max-width: 760px;
+  margin-right: auto;
+  margin-left: auto;
 }
+.search-box { position: absolute; z-index: 2; right: 50%; bottom: -31px; width: min(650px, calc(100% - 36px)); display: grid; grid-template-columns: 22px 1fr; align-items: center; column-gap: 12px; padding: 12px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); box-shadow: var(--shadow-md); transform: translateX(50%); text-align: left; }
+.search-box svg { grid-row: span 2; width: 21px; fill: none; stroke: var(--brand); stroke-width: 1.8; stroke-linecap: round; }
+.search-box label { color: var(--ink-soft); font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.search-box input { min-width: 0; padding: 2px 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: .92rem; }
+.search-box input::placeholder { color: #95a0aa; }
 .shop-layout {
+  position: relative;
+  z-index: 1;
   max-width: 1180px;
-  margin: 56px auto;
+  margin: 84px auto 70px;
   padding: 0 28px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 300px;
@@ -109,9 +124,11 @@ aside { transition: background-color .25s ease, border-color .25s ease, box-shad
 aside h2 {
   margin: 0;
   font:
-    700 1.8rem Georgia,
-    serif;
+    400 1.95rem var(--font-display);
 }
+.filter-row { display: flex; gap: 8px; margin: -7px 0 25px; padding-bottom: 3px; overflow-x: auto; scrollbar-width: thin; }
+.filter-row button { flex: 0 0 auto; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--ink-soft); font-size: .69rem; font-weight: 700; cursor: pointer; transition: .2s ease; }
+.filter-row button:hover, .filter-row button.active { border-color: var(--brand); background: var(--brand); color: var(--on-brand); }
 .catalog-title span,
 .bag-head span {
   color: #74808c;
@@ -123,28 +140,38 @@ aside h2 {
   gap: 20px;
 }
 .shop-book {
-  padding: 12px;
-  background: white;
-  border: 1px solid transparent;
-  box-shadow: 0 8px 23px rgba(17, 42, 66, 0.1);
+  overflow: hidden;
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   cursor: pointer;
   transform: translateY(0);
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 .shop-book:hover { transform: translateY(-5px); border-color: #ddcbed; box-shadow: 0 15px 30px rgba(17, 42, 66, .14); }
 .shop-book:focus-visible { outline: 3px solid #c7a6ed; outline-offset: 3px; }
+.cover-stage { position: relative; height: 310px; display: grid; place-items: center; overflow: hidden; border-radius: 10px; background: var(--paper-deep); }
+.cover-stage > span { position: absolute; z-index: 1; top: 12px; left: 12px; padding: 6px 9px; border-radius: 999px; background: rgba(255,255,255,.9); color: #5b377f; font-size: .58rem; font-weight: 800; letter-spacing: .04em; box-shadow: var(--shadow-sm); }
 .cover {
   width: 100%;
-  height: 300px;
+  height: 89%;
+  max-width: 82%;
   display: block;
   object-fit: contain;
-  background: #f5f2eb;
+  background: transparent;
+  filter: drop-shadow(0 13px 12px rgba(20, 30, 40, .17));
+  transition: transform .3s ease;
 }
+.shop-book:hover .cover { transform: scale(1.035); }
+.shop-book-info { padding: 8px 7px 6px; }
+.rating { margin-top: 6px; color: #d59d37; font-size: .66rem; letter-spacing: .05em; }
+.rating small { margin-left: 4px; color: var(--ink-soft); letter-spacing: 0; }
 .shop-book h3 {
   margin: 15px 0 4px;
   font:
-    bold 1.08rem Georgia,
-    serif;
+    400 1.12rem var(--font-display);
 }
 .shop-book p {
   margin: 0;
@@ -160,15 +187,16 @@ aside h2 {
   width: 100%;
   padding: 11px;
   border: 0;
-  background: #6f42c1;
-  color: white;
+  border-radius: 7px;
+  background: var(--brand);
+  color: var(--on-brand);
   font-weight: 800;
   cursor: pointer;
   transition: background-color .2s ease, transform .2s ease;
 }
 .shop-book button:hover,
 .checkout:hover {
-  background: #54228c;
+  background: var(--brand-deep);
 }
 .shop-book button:active,
 .checkout:active { transform: translateY(1px); }
@@ -178,13 +206,22 @@ aside h2 {
 aside {
   position: sticky;
   top: 18px;
-  background: white;
+  background: var(--surface);
   border: 1px solid #e1d8ef;
   border-top: 4px solid #6f42c1;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 24px;
   box-shadow: 0 14px 34px rgba(25, 52, 80, 0.12);
 }
+.no-results { grid-column: 1 / -1; padding: 70px 25px; border: 1px dashed var(--line); border-radius: var(--radius-md); color: var(--ink-soft); text-align: center; }
+.no-results > span { color: var(--brand); font: 400 3rem var(--font-display); }
+.no-results h3 { margin: 9px 0 4px; color: var(--ink); font: 400 1.5rem var(--font-display); }
+.no-results p { margin: 0 0 18px; }
+.no-results button { padding: 9px 14px; border: 1px solid var(--brand); border-radius: 7px; background: transparent; color: var(--brand); font-weight: 700; cursor: pointer; }
+.toast { position: fixed; z-index: 1200; right: 24px; bottom: 24px; display: flex; align-items: center; gap: 10px; max-width: min(420px, calc(100% - 32px)); padding: 13px 16px; border: 1px solid #bcd8c5; border-radius: 10px; background: #f1fbf4; color: #245e37; box-shadow: var(--shadow-md); font-size: .79rem; animation: toast-in .3s ease both; }
+.toast > span { display: grid; width: 23px; height: 23px; place-items: center; border-radius: 50%; background: #2f7a48; color: white; font-size: .72rem; }
+.toast a { margin-left: auto; color: #245e37; font-weight: 800; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(10px); } }
 .bag-head {
   display: flex;
   justify-content: space-between;
@@ -286,8 +323,8 @@ aside {
 .modal-synopsis { margin: 0; color: #40566c; font-size: .92rem; line-height: 1.65; }
 .modal-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 25px; padding-top: 18px; border-top: 1px solid #e5deeb; }
 .modal-footer strong { color: #54228c; font: 700 1.25rem Georgia, serif; }
-.modal-footer button { border: 0; padding: 11px 15px; background: #6f42c1; color: white; font: 800 .8rem Inter, Arial, sans-serif; cursor: pointer; transition: background-color .2s ease, transform .2s ease; }
-.modal-footer button:hover { background: #54228c; transform: translateY(-1px); }
+.modal-footer button { border: 0; padding: 11px 15px; background: var(--brand); color: var(--on-brand); font: 800 .8rem var(--font-sans); cursor: pointer; transition: background-color .2s ease, transform .2s ease; }
+.modal-footer button:hover { background: var(--brand-deep); transform: translateY(-1px); }
 .modal-close { position: absolute; z-index: 1; top: 10px; right: 10px; display: grid; width: 34px; height: 34px; padding: 0; place-items: center; border: 0; border-radius: 50%; background: rgba(25, 52, 80, .08); color: #193450; font-size: 1.6rem; line-height: 1; cursor: pointer; transition: background-color .2s ease, transform .2s ease; }
 .modal-close:hover { background: #eee4f8; transform: rotate(90deg); }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
@@ -306,17 +343,16 @@ aside {
     justify-content: space-between;
     gap: 6px;
   }
+  .shop-page .brand > span { display: none; }
   .shop-layout {
     grid-template-columns: 1fr;
-    margin: 35px auto;
+    margin: 66px auto 45px;
     padding: 0 18px;
   }
   .catalog-grid {
     gap: 12px;
   }
-  .cover {
-    height: 230px;
-  }
+  .cover-stage { height: 245px; }
   aside {
     position: static;
   }
@@ -324,8 +360,8 @@ aside {
     font-size: 0.72rem;
   }
   .shop-page .brand img {
-    width: 76px;
-    height: 76px;
+    width: 58px;
+    height: 58px;
   }
   .book-modal { grid-template-columns: 130px 1fr; gap: 18px; padding: 22px; }
   .book-modal > img { height: 235px; }
@@ -341,6 +377,22 @@ aside {
   display: block;
   text-align: center;
   text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .shop-page header { align-items: center; }
+  .shop-page nav { overflow-x: auto; }
+  .cart-link span { display: none; }
+  .shop-hero { padding: 58px 20px 80px; }
+  .shop-hero h1 { font-size: 2.45rem; }
+  .catalog-title { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .catalog-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cover-stage { height: 215px; }
+  .cover-stage > span { max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .shop-book h3 { min-height: 2.45em; font-size: .96rem; }
+  .book-actions { grid-template-columns: 1fr; }
+  .shop-book .details-button { display: none; }
+  .toast { right: 16px; bottom: 16px; }
 }
 
 

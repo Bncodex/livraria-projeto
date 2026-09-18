@@ -1,31 +1,68 @@
 <footer class="footer">
-  <div class="container">
-    <!-- Coluna 1: Logo e Descrição -->
-    <div class="sobre">
-      <img src="/images/logoprojeto-removebg-preview.png" alt="Universo Literário" />
-      <h3>UNIVERSO LITERÁRIO</h3>
-      <p>
-        Livros que conectam galáxias e imaginários. Histórias pensadas para quem ama descobrir novos
-        mundos através da leitura.
-      </p>
+  <section class="footer-cta" aria-labelledby="footer-cta-title">
+    <div>
+      <p class="footer-kicker">Sua próxima leitura espera por você</p>
+      <h2 id="footer-cta-title">Toda grande história começa com uma escolha.</h2>
     </div>
+    <a routerLink="/comprar">Explorar o catálogo <span>→</span></a>
+  </section>
 
-    <!-- Coluna 2: Contato e Navegação -->
-    <div class="contato">
-      <h3>CONTATO</h3>
-      <p> universoliterario@gmail.com</p>
-      <a href="#" class="btn-inicio">Voltar ao início</a>
+  <div class="trust-row" aria-label="Diferenciais do Universo Literário">
+    <div>
+      <span class="trust-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 5.5h12v13H4zM16 9h2.5l2 3v6.5H16zM7.5 19a1.7 1.7 0 1 1-3.4 0 1.7 1.7 0 0 1 3.4 0Zm12 0a1.7 1.7 0 1 1-3.4 0 1.7 1.7 0 0 1 3.4 0Z"/></svg>
+      </span>
+      <p><strong>Entrega acompanhada</strong><small>Do nosso universo até sua estante</small></p>
     </div>
-
-    <!-- Coluna 3: Redes Sociais -->
-    <div class="rede-social">
-      <h3>REDES SOCIAIS</h3>
-      <a href="https://www.instagram.com/" target="_blank" title="Instagram"> Instagram </a>
+    <div>
+      <span class="trust-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="m12 3 7 3v5c0 4.4-2.8 8.1-7 10-4.2-1.9-7-5.6-7-10V6zM9 12l2 2 4-4"/></svg>
+      </span>
+      <p><strong>Compra protegida</strong><small>Seus dados tratados com segurança</small></p>
+    </div>
+    <div>
+      <span class="trust-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM8 19.5a3 3 0 0 1 3-3h7"/></svg>
+      </span>
+      <p><strong>Curadoria de verdade</strong><small>Histórias selecionadas por leitores</small></p>
     </div>
   </div>
 
-  <!-- Parte inferior -->
-  <div class="inferior">
+  <div class="footer-main">
+    <div class="footer-about">
+      <a routerLink="/" class="footer-brand" aria-label="Página inicial do Universo Literário">
+        <img src="/images/logoprojeto-removebg-preview.png" alt="" />
+        <span><strong>Universo</strong>Literário</span>
+      </a>
+      <p>Livros que conectam galáxias e imaginários. Uma curadoria para quem encontra casa, coragem e novas possibilidades nas páginas.</p>
+      <span class="reader-badge"><b>✦</b> Feito para leitores curiosos</span>
+    </div>
+
+    <nav class="footer-column" aria-label="Navegação do rodapé">
+      <h3>EXPLORE</h3>
+      <a routerLink="/">Início</a>
+      <a routerLink="/comprar">Todos os livros</a>
+      <a routerLink="/sobre-nos">Nossa história</a>
+      <a routerLink="/pedidos">Meus pedidos</a>
+    </nav>
+
+    <div class="footer-column">
+      <h3>ATENDIMENTO</h3>
+      <a href="mailto:universoliterario@gmail.com">universoliterario&#64;gmail.com</a>
+      <p>Segunda a sexta<br />das 9h às 18h</p>
+    </div>
+
+    <div class="footer-column social-column">
+      <h3>ACOMPANHE</h3>
+      <p>Descobertas literárias, novidades e bastidores da nossa curadoria.</p>
+      <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener">
+        <span>Instagram</span><b>↗</b>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
     <p>© 2026 Universo Literário. Todos os direitos reservados.</p>
+    <p class="footer-signature"><span>✦</span> Histórias que continuam com você.</p>
   </div>
 </footer>

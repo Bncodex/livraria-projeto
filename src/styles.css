@@ -1,46 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
+
+:root {
+  --font-sans: 'DM Sans', 'Segoe UI', Arial, sans-serif;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --ink: #172d44;
+  --ink-soft: #526579;
+  --paper: #fbf9f4;
+  --paper-deep: #f1ede4;
+  --surface: #ffffff;
+  --line: #e5dfd5;
+  --brand: #6c3eb3;
+  --brand-deep: #4d247f;
+  --brand-soft: #eee6f8;
+  --on-brand: #ffffff;
+  --lavender: #d9c2f1;
+  --success: #2b7143;
+  --shadow-sm: 0 8px 24px rgba(23, 45, 68, .08);
+  --shadow-md: 0 18px 50px rgba(23, 45, 68, .13);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --container: 1180px;
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; font-family: Inter, Arial, sans-serif; color: #192b42; background: #fffdf8; }
+body { margin: 0; font-family: var(--font-sans); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; }
+button, input, select, textarea { font: inherit; }
 a { color: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid var(--lavender); outline-offset: 3px; }
+::selection { background: var(--lavender); color: var(--ink); }
 
-html[data-tema='escuro'] body { color: #e8eef6; background: #101a29; }
+html[data-tema='escuro'] {
+  --ink: #edf3f8; --ink-soft: #b2c0ce; --paper: #0f1926; --paper-deep: #172536;
+  --surface: #19283a; --line: #30445a; --brand: #b58ae5; --brand-deep: #d1b1f2;
+  --brand-soft: #2b3a50; --on-brand: #142235; --shadow-sm: 0 8px 24px rgba(0, 0, 0, .2);
+  --shadow-md: 0 18px 50px rgba(0, 0, 0, .3); color-scheme: dark;
+}
+html[data-tema='escuro'] body { color: var(--ink); background: var(--paper); }
 html[data-tema='escuro'] .topbar,
 html[data-tema='escuro'] .shop-page,
 html[data-tema='escuro'] .shop-page header,
 html[data-tema='escuro'] .checkout-page,
-html[data-tema='escuro'] .orders-page { background: #101a29; color: #e8eef6; }
+html[data-tema='escuro'] .orders-page { background: var(--paper); color: var(--ink); }
 html[data-tema='escuro'] .sobre-page,
-html[data-tema='escuro'] .sobre-nos { background: #142033; }
-html[data-tema='escuro'] .login-page { background: #101a29; }
-html[data-tema='escuro'] .login-card { background: #1b2a3d; color: #e8eef6; }
-html[data-tema='escuro'] .login-card > p { color: #afbdcd; }
-html[data-tema='escuro'] .accounts { background: #22364d; color: #eadcff; }
-html[data-tema='escuro'] .home-link { color: #c7d3df; }
-html[data-tema='escuro'] nav a,
-html[data-tema='escuro'] .shop-page nav a,
-html[data-tema='escuro'] .cart-link { color: #dbe5ef; }
-html[data-tema='escuro'] .theme-toggle { border-color: #4e637a !important; color: #e8eef6 !important; }
-html[data-tema='escuro'] .theme-toggle:hover { background: #22364d !important; color: #d9baff !important; }
+html[data-tema='escuro'] .sobre-nos { background: var(--paper-deep); }
+html[data-tema='escuro'] .login-page { background: #0b1420; }
+html[data-tema='escuro'] .login-card,
 html[data-tema='escuro'] .shop-book,
 html[data-tema='escuro'] aside,
 html[data-tema='escuro'] form,
 html[data-tema='escuro'] .success-card,
 html[data-tema='escuro'] .order-list article,
-html[data-tema='escuro'] .empty { background: #1b2a3d; color: #e8eef6; box-shadow: 0 8px 23px rgba(0, 0, 0, .25); }
+html[data-tema='escuro'] .empty,
+html[data-tema='escuro'] .book-card { background: var(--surface); color: var(--ink); border-color: var(--line); }
+html[data-tema='escuro'] .accounts,
+html[data-tema='escuro'] .bag-count,
+html[data-tema='escuro'] .empty-icon { background: var(--brand-soft); color: #eadcff; }
+html[data-tema='escuro'] nav a,
+html[data-tema='escuro'] .shop-page nav a,
+html[data-tema='escuro'] .home-link { color: var(--ink-soft); }
+html[data-tema='escuro'] .cart-link { background: var(--brand); color: var(--on-brand); }
+html[data-tema='escuro'] .details-button { background: #30435a !important; color: #dec6fa !important; }
+html[data-tema='escuro'] .details-button:hover { background: #3a506a !important; }
+html[data-tema='escuro'] .cover-stage > span { background: #25384c; color: #dfc9f6; }
+html[data-tema='escuro'] .quantity-controls button { border-color: #50647a; background: #24384d; color: #e0c9fa; }
+html[data-tema='escuro'] .quantity-controls span { color: var(--ink); }
+html[data-tema='escuro'] .form-errors { background: #43242c; color: #ffd0d7; }
+html[data-tema='escuro'] .primary-action,
+html[data-tema='escuro'] .empty a,
+html[data-tema='escuro'] .modal-footer button,
+html[data-tema='escuro'] .home-button { background: var(--brand) !important; color: var(--on-brand) !important; }
+html[data-tema='escuro'] .primary-action:hover,
+html[data-tema='escuro'] .empty a:hover,
+html[data-tema='escuro'] .modal-footer button:hover,
+html[data-tema='escuro'] .home-button:hover { background: var(--brand-deep) !important; color: #172d44 !important; }
+html[data-tema='escuro'] .theme-toggle { border-color: #4e637a !important; color: var(--ink) !important; }
+html[data-tema='escuro'] .theme-toggle:hover { background: #22364d !important; color: #d9baff !important; }
 html[data-tema='escuro'] .shop-book p,
 html[data-tema='escuro'] .catalog-title span,
-html[data-tema='escuro'] .bag-head span,
 html[data-tema='escuro'] .bag-item span,
-html[data-tema='escuro'] .empty,
 html[data-tema='escuro'] .checkout-heading > p:last-child,
 html[data-tema='escuro'] .success-card > p:last-of-type,
 html[data-tema='escuro'] .order-head p,
 html[data-tema='escuro'] .order-list ul,
 html[data-tema='escuro'] .orders-intro > p:last-child,
 html[data-tema='escuro'] .sobre-texto > p,
-html[data-tema='escuro'] .valor p { color: #b9c7d6; }
-html[data-tema='escuro'] .bag-count,
-html[data-tema='escuro'] .empty-icon { background: #33445a; color: #e1c8ff !important; }
+html[data-tema='escuro'] .valor p,
+html[data-tema='escuro'] .book-info p { color: var(--ink-soft); }
 html[data-tema='escuro'] .order-summary span { background: #1f4931; color: #c4f1d1; }
 html[data-tema='escuro'] .catalog-title h2,
 html[data-tema='escuro'] aside h2,
@@ -49,23 +97,23 @@ html[data-tema='escuro'] .success-card h1,
 html[data-tema='escuro'] .orders-page h1,
 html[data-tema='escuro'] .empty h2,
 html[data-tema='escuro'] h1,
-html[data-tema='escuro'] .valor h3 { color: #f1f5f9; }
-html[data-tema='escuro'] input { background: #17212d; border-color: #53677a; color: #f1f5f9; }
+html[data-tema='escuro'] h2,
+html[data-tema='escuro'] h3,
+html[data-tema='escuro'] .valor h3 { color: var(--ink); }
+html[data-tema='escuro'] input { background: #132132; border-color: #53677a; color: var(--ink); }
+html[data-tema='escuro'] .search-box input { background: transparent; border-color: transparent; }
 html[data-tema='escuro'] label { color: #d6e0ea; }
-html[data-tema='escuro'] .cover { background: #e9e4d8; }
-html[data-tema='escuro'] .book-modal { background: #1b2a3d; color: #e8eef6; }
+html[data-tema='escuro'] .image-stage,
+html[data-tema='escuro'] .cover { background: #263648; }
+html[data-tema='escuro'] .book-modal { background: var(--surface); color: var(--ink); }
 html[data-tema='escuro'] .modal-author,
-html[data-tema='escuro'] .modal-synopsis { color: #afbdcd; }
-html[data-tema='escuro'] .modal-footer { border-color: #30445a; }
+html[data-tema='escuro'] .modal-synopsis { color: var(--ink-soft); }
+html[data-tema='escuro'] .modal-footer { border-color: var(--line); }
 html[data-tema='escuro'] .modal-close { background: #2a4058; color: #f0f5fa; }
-html[data-tema='escuro'] .modal-close:hover { background: #40546d; }
-html[data-tema='escuro'] .shop-book { border-color: #2d4560; }
-html[data-tema='escuro'] .shop-book .details-button { background: #293c54; color: #d9baff; }
-html[data-tema='escuro'] .shop-book .details-button:hover { background: #354b67; }
 html[data-tema='escuro'] .visit { background: #1d3044; }
-html[data-tema='escuro'] .visit h2 { color: #f1f5f9; }
-html[data-tema='escuro'] .visit p:last-child { color: #b9c7d6; }
-html[data-tema='escuro'] .valores { border-color: #334a63; }
+html[data-tema='escuro'] .visit h2 { color: var(--ink); }
+html[data-tema='escuro'] .visit p:last-child { color: var(--ink-soft); }
+html[data-tema='escuro'] .valores { border-color: var(--line); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

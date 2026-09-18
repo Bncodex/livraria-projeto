@@ -6,7 +6,9 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Login } from './login';
 // Angular library testa se o login está sendo autenticado e se está sendo levado para a Home.
 describe('Login', () => {
-  beforeEach(() => localStorage.clear());
+  beforeEach(() => {
+    localStorage.clear();
+  });
 
   it('autentica uma conta fictícia e direciona para a página inicial', async () => {
     await render(Login, { routes: [{ path: '', component: Login }] });

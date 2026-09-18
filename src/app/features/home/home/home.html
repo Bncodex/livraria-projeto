@@ -1,24 +1,42 @@
 <main class="home-page">
+  <div class="announcement"><span>✦</span> Frete calculado no checkout · Curadoria feita por leitores</div>
   <header class="topbar">
-    <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"><img src="/images/logoprojeto-removebg-preview.png" alt="Universo Literário" /></a>
+    <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário">
+      <img src="/images/logoprojeto-removebg-preview.png" alt="" />
+      <span><strong>Universo</strong>Literário</span>
+    </a>
     <nav aria-label="Navegação principal">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Início</a>
-      <a routerLink="/comprar">Comprar</a>
-      <a routerLink="/sobre-nos">Sobre nós</a>
+      <a routerLink="/comprar">Livros</a>
+      <a routerLink="/sobre-nos">Nossa história</a>
     </nav>
-    <app-conta-conectada />
+    <div class="top-actions">
+      <a class="search-link" routerLink="/comprar" aria-label="Buscar livros">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+      </a>
+      <app-conta-conectada />
+    </div>
   </header>
 
   <section class="hero">
     <img src="/images/saladeleitura.png" alt="Interior acolhedor de uma biblioteca" />
     <div class="hero-content">
+      <span class="hero-seal">Curadoria da semana</span>
       <p class="eyebrow">Um universo inteiro em cada página</p>
       <h1>Seu próximo mundo começa aqui.</h1>
-      <p class="hero-text">No Universo Literário, cada leitura é uma constelação de encontros, memórias e novas possibilidades.</p>
+      <p class="hero-text">Histórias escolhidas para despertar ideias, guardar memórias e acompanhar você muito além da última página.</p>
       <div class="hero-actions">
-        <a routerLink="/comprar" class="button primary">Comprar livros</a>
+        <a routerLink="/comprar" class="button primary">Comprar livros <span>→</span></a>
+        <a href="#categorias" class="button secondary">Explorar categorias</a>
       </div>
+      <div class="reader-proof"><span class="stars">★★★★★</span><span><strong>4,9</strong> · favoritos dos nossos leitores</span></div>
     </div>
+  </section>
+
+  <section class="benefits" aria-label="Benefícios da loja">
+    <article><span>01</span><div><strong>Curadoria humana</strong><p>Livros escolhidos com intenção.</p></div></article>
+    <article><span>02</span><div><strong>Compra segura</strong><p>Uma jornada simples do início ao fim.</p></div></article>
+    <article><span>03</span><div><strong>Para todos os leitores</strong><p>Clássicos, novidades e novas vozes.</p></div></article>
   </section>
 
   <section class="intro">
@@ -27,72 +45,38 @@
     <p>Entre clássicos, novidades e vozes brasileiras, há sempre uma história pronta para encontrar você.</p>
   </section>
 
+  <section id="categorias" class="categories" aria-labelledby="categories-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Escolha seu caminho</p><h2 id="categories-title">Explore por categoria</h2></div>
+    </div>
+    <div class="category-grid">
+      <a routerLink="/comprar" class="category-card fantasy"><span>✦</span><div><small>Outros mundos</small><h3>Fantasia</h3></div><b>→</b></a>
+      <a routerLink="/comprar" class="category-card classics"><span>“</span><div><small>Leituras eternas</small><h3>Clássicos</h3></div><b>→</b></a>
+      <a routerLink="/comprar" class="category-card romance"><span>♡</span><div><small>Histórias que ficam</small><h3>Romance</h3></div><b>→</b></a>
+    </div>
+  </section>
+
   <section class="book-section" aria-labelledby="destaques-title">
     <div class="section-heading">
       <div><p class="eyebrow">Estrelas da estante</p><h2 id="destaques-title">Destaques da semana</h2></div>
-      <a routerLink="/comprar">Ver todos <span>→</span></a>
+      <a routerLink="/comprar">Ver catálogo <span>→</span></a>
     </div>
     <div class="book-grid">
-      @for (livro of destaques; track livro.titulo) {
-        <article class="book-card">
-          <img class="image-cover" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" style="display: block; width: 100%; height: 265px; object-fit: contain; background: #f5f2eb" />
+      @for (livro of destaques; track livro.titulo; let i = $index) {
+        <a class="book-card" routerLink="/comprar">
+          <div class="image-stage"><span class="rank">0{{ i + 1 }}</span><img [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" /></div>
           <div class="book-info">
+            <span class="book-genre">{{ livro.genero }}</span>
             <h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p>
+            <div><strong>{{ livro.preco }}</strong><span class="card-arrow" aria-hidden="true">↗</span></div>
           </div>
-        </article>
+        </a>
       }
     </div>
   </section>
 
   <section class="visit">
-    <div><p class="eyebrow">Muito além das páginas</p><h2>Um refúgio para quem vive de histórias.</h2><p>Descubra novas vozes, abrace outros mundos e deixe a literatura fazer morada nos seus dias.</p></div>
-    <a routerLink="/sobre-nos" class="button dark">Conheça o Universo</a>
+    <div><p class="eyebrow">Muito além das páginas</p><h2>Um refúgio para quem vive de histórias.</h2><p>Conheça o olhar por trás da nossa curadoria e o compromisso de aproximar cada leitor da história certa.</p></div>
+    <a routerLink="/sobre-nos" class="button dark">Conheça o Universo <span>→</span></a>
   </section>
-
-<!--<footer class="footer">
-
-  <div class="container">
-
-    <div class="sobre">
-      <h2>UNIVERSO<br>LITERÁRIO</h2>
-
-      <p>
-        Livros que conectam galáxias e imaginários.
-        Histórias pensadas para quem ama descobrir novos mundos através da leitura.
-      </p>
-
-      <a href="#">Ver mais</a>
-    </div>
-
-    <div class="contato">
-      <p>✉️ E-mail</p>
-
-      <a href="mailto:universoliterario@gmail.com">
-        universoliterario@gmail.com
-      </a>
-    </div>
-
-    <div>
-      <h3>Redes sociais</h3>
-
-      <div class="rede-social">
-        <a
-          href="https://www.instagram.com/"
-          target="_blank"
-          title="Instagram">
-          Instagram
-        </a>
-      </div>
-    </div>
-
-  </div>
-<footer>
-  <div class="inferior">
-    <p>
-      © 2026 Universo Literário. Todos os direitos reservados.
-    </p>
-  </div>
-  </footer>
-
-</footer>-->
 </main>

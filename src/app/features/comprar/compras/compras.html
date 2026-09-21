@@ -1,12 +1,10 @@
 <main class="shop-page">
   <header>
-    <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"
-      ><img src="/images/logoprojeto-removebg-preview.png" alt="Universo Literário"
-    /></a>
-    <nav><a routerLink="/">Início</a><a routerLink="/sobre-nos">Sobre nós</a></nav>
+    <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"><img src="/images/logoprojeto-removebg-preview.png" alt="" /><span><strong>Universo</strong>Literário</span></a>
+    <nav><a routerLink="/">Início</a><a routerLink="/comprar" class="active">Livros</a><a routerLink="/sobre-nos">Nossa história</a></nav>
     <div class="header-actions">
       <app-conta-conectada />
-      <a class="cart-link" [attr.aria-label]="carrinho.quantidade() + ' item(ns) no carrinho'">
+      <a class="cart-link" href="#carrinho" [attr.aria-label]="carrinho.quantidade() + ' item(ns) no carrinho'">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H6.4M10 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" /></svg>
         <span>Carrinho</span>
         <b>{{ carrinho.quantidade() }}</b>
@@ -14,25 +12,41 @@
     </div>
   </header>
   <section class="shop-hero">
-    <p>Universo Literário</p>
+    <p>Catálogo · 19 histórias escolhidas</p>
     <h1>Encontre a história que vai acompanhar o seu céu.</h1>
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+      <label for="book-search">Busque por título, autor ou gênero</label>
+      <input id="book-search" type="search" placeholder="Ex.: Clarice Lispector" [ngModel]="busca()" (ngModelChange)="busca.set($event)" />
+    </div>
   </section>
   <div class="shop-layout">
     <section>
       <div class="catalog-title">
         <h2>Todos os livros</h2>
-        <span>{{ livros.length }} títulos selecionados</span>
+        <span>{{ livrosFiltrados().length }} título(s) encontrado(s)</span>
+      </div>
+
+      <div class="filter-row" aria-label="Filtrar por categoria">
+        @for (categoria of categorias; track categoria) {
+          <button type="button" [class.active]="categoriaAtiva() === categoria" (click)="selecionarCategoria(categoria)">{{ categoria }}</button>
+        }
       </div>
 
       <div class="catalog-grid">
-        @for (livro of livros; track livro.id) {
+        @for (livro of livrosFiltrados(); track livro.id) {
           <article class="shop-book" tabindex="0" role="button" [attr.aria-label]="'Ver detalhes de ' + livro.titulo" (click)="abrirDetalhes(livro)" (keydown.enter)="abrirDetalhes(livro)" (keydown.space)="abrirDetalhes(livro); $event.preventDefault()">
-            <img class="cover" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" />
-            <h3>{{ livro.titulo }}</h3>
-            <p>{{ livro.autor }}</p>
-            <strong>{{ livro.preco | currency: 'BRL' }}</strong
-            ><div class="book-actions"><button class="details-button" type="button" (click)="abrirDetalhes(livro); $event.stopPropagation()">Ver detalhes</button><button type="button" (click)="adicionar(livro); $event.stopPropagation()">Adicionar à sacola</button></div>
+            <div class="cover-stage"><span>{{ livro.genero }}</span><img class="cover" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" /></div>
+            <div class="shop-book-info">
+              <div class="rating" aria-label="Avaliação 5 de 5">★★★★★ <small>5.0</small></div>
+              <h3>{{ livro.titulo }}</h3>
+              <p>{{ livro.autor }}</p>
+              <strong>{{ livro.preco | currency: 'BRL' }}</strong>
+              <div class="book-actions"><button class="details-button" type="button" (click)="abrirDetalhes(livro); $event.stopPropagation()">Detalhes</button><button type="button" (click)="adicionar(livro); $event.stopPropagation()">Adicionar</button></div>
+            </div>
           </article>
+        } @empty {
+          <div class="no-results"><span>⌕</span><h3>Nenhum livro encontrado</h3><p>Tente outro título, autor ou categoria.</p><button type="button" (click)="busca.set(''); selecionarCategoria('Todos')">Limpar filtros</button></div>
         }
       </div>
     </section>
@@ -71,6 +85,10 @@
     </aside>
   </div>
 </main>
+
+@if (aviso()) {
+  <div class="toast" role="status" aria-live="polite"><span>✓</span>{{ aviso() }} <a href="#carrinho">Ver sacola</a></div>
+}
 
 @if (livroSelecionado(); as livro) {
   <div class="modal-overlay" (click)="fecharDetalhes()">

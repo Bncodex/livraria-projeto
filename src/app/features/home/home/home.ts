@@ -12,10 +12,10 @@ import { ContaConectada } from '../../../core/components/conta-conectada/conta-c
 export class Home {
 
   readonly destaques = [
-    { titulo: 'Eu e Esse Meu Coração', autor: 'C. C. Hunter', imagem: '/images/eueessemeucoracao.jpeg' },
-    { titulo: 'Harry Potter e as Relíquias da Morte', autor: 'J. K. Rowling', imagem: '/images/harrypotter.jpeg' },
-    { titulo: 'João e o Pé de Feijão', autor: 'Igor Barbosa', imagem: '/images/joaoeopedefeijao.jpeg' },
-    { titulo: 'O Alienista', autor: 'Machado de Assis', imagem: '/images/oalienista.jpeg' },
+    { titulo: 'Eu e Esse Meu Coração', autor: 'C. C. Hunter', imagem: '/images/eueessemeucoracao.jpeg', genero: 'Romance', preco: 'R$ 41,90' },
+    { titulo: 'Harry Potter e as Relíquias da Morte', autor: 'J. K. Rowling', imagem: '/images/harrypotter.jpeg', genero: 'Fantasia', preco: 'R$ 49,90' },
+    { titulo: 'João e o Pé de Feijão', autor: 'Igor Barbosa', imagem: '/images/joaoeopedefeijao.jpeg', genero: 'Infantil', preco: 'R$ 24,90' },
+    { titulo: 'O Alienista', autor: 'Machado de Assis', imagem: '/images/oalienista.jpeg', genero: 'Literatura brasileira', preco: 'R$ 26,90' },
   ];
 
 }

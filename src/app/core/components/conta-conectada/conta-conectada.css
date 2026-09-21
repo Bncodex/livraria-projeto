@@ -5,7 +5,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: #53677a;
+  color: var(--ink-soft);
   font-size: 0.78rem;
   font-weight: 700;
   white-space: nowrap;
@@ -20,14 +20,13 @@
 .session a,
 .login-link {
   border: 0;
-  background: #6f42c1;
-  color: white;
+  border-radius: 7px;
+  background: var(--brand);
+  color: var(--on-brand);
   padding: 8px 10px;
   text-decoration: none;
   font:
-    700 0.75rem Inter,
-    Arial,
-    sans-serif;
+    700 0.75rem var(--font-sans);
   cursor: pointer;
 }
 .theme-toggle {
@@ -36,15 +35,20 @@
   height: 36px;
   padding: 0;
   place-items: center;
-  border: 1px solid #cbd3db !important;
+  border: 1px solid var(--line) !important;
   border-radius: 50%;
   background: transparent !important;
-  color: #32465e !important;
+  color: var(--ink) !important;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
 }
 .theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.theme-toggle:hover { background: #edf0f3 !important; color: #6f42c1 !important; }
+.theme-toggle:hover { background: var(--brand-soft) !important; color: var(--brand) !important; transform: rotate(12deg); }
 .session button:hover,
 .session a:hover,
 .login-link:hover {
-  background: #54228c;
+  background: var(--brand-deep);
+}
+@media (max-width: 520px) {
+  .session-name { display: none; }
+  .session { gap: 5px; }
 }

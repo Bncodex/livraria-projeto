@@ -1,0 +1,59 @@
+<div class="status-email-container">
+  @if (enviando) {
+    <div class="status-banner loading">
+      <div class="spinner"></div>
+      <div class="status-text">
+        <strong>Enviando notificação do pedido...</strong>
+        <span>Disparando e-mail personalizado para Bern1822&#64;outlook.com</span>
+      </div>
+    </div>
+  }
+
+  @if (sucesso) {
+    <div class="status-banner success">
+      <div class="status-header">
+        <span class="badge-icon">✉</span>
+        <div>
+          <strong>E-mail enviado com sucesso!</strong>
+          <p>Uma notificação com os detalhes da compra foi enviada para <strong>Bern1822&#64;outlook.com</strong>.</p>
+        </div>
+      </div>
+
+      @if (dados; as info) {
+        <div class="email-details-box">
+          <p class="details-title">Resumo enviado por e-mail:</p>
+          <div class="details-grid">
+            <div>
+              <span class="label">Quando comprou:</span>
+              <span class="value">{{ info.data_compra }}</span>
+            </div>
+            <div>
+              <span class="label">Cliente:</span>
+              <span class="value">{{ info.nome_cliente }}</span>
+            </div>
+            <div>
+              <span class="label">Valor Total:</span>
+              <span class="value total-destaque">{{ info.valor_total }}</span>
+            </div>
+          </div>
+
+          <div class="items-summary">
+            <span class="label">O que comprou:</span>
+            <pre class="items-pre">{{ info.itens_pedido }}</pre>
+          </div>
+        </div>
+      }
+    </div>
+  }
+
+  @if (erro) {
+    <div class="status-banner error">
+      <span class="badge-icon">⚠️</span>
+      <div class="status-text">
+        <strong>Não foi possível enviar o e-mail automaticamente</strong>
+        <span>{{ erro }}</span>
+        <small class="hint">Dica: Verifique se sua Public Key do EmailJS está preenchida no <code>email.service.ts</code>.</small>
+      </div>
+    </div>
+  }
+</div>

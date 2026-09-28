@@ -16,6 +16,8 @@ describe('Compras', () => {
     remover: vi.fn(),
   };
 
+  
+  // angular library
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Compras, RouterTestingModule],
@@ -51,4 +53,6 @@ describe('Compras', () => {
   
     expect(carrinhoMock.adicionar).toHaveBeenCalledWith(livro);
   });
+  
+  
 });

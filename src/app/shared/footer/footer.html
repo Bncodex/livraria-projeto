@@ -4,7 +4,7 @@
       <p class="footer-kicker">Sua próxima leitura espera por você</p>
       <h2 id="footer-cta-title">Toda grande história começa com uma escolha.</h2>
     </div>
-    <a routerLink="/comprar">Explorar o catálogo <span>→</span></a>
+    <a routerLink="/comprar" (click)="rolarAoTopo()">Explorar o catálogo <span>→</span></a>
   </section>
 
   <div class="trust-row" aria-label="Diferenciais do Universo Literário">
@@ -30,7 +30,7 @@
 
   <div class="footer-main">
     <div class="footer-about">
-      <a routerLink="/" class="footer-brand" aria-label="Página inicial do Universo Literário">
+      <a routerLink="/" class="footer-brand" aria-label="Página inicial do Universo Literário" (click)="rolarAoTopo()">
         <img src="/images/logoprojeto-removebg-preview.png" alt="" />
         <span><strong>Universo</strong>Literário</span>
       </a>
@@ -40,10 +40,10 @@
 
     <nav class="footer-column" aria-label="Navegação do rodapé">
       <h3>EXPLORE</h3>
-      <a routerLink="/">Início</a>
-      <a routerLink="/comprar">Todos os livros</a>
-      <a routerLink="/sobre-nos">Nossa história</a>
-      <a routerLink="/pedidos">Meus pedidos</a>
+      <a routerLink="/" (click)="rolarAoTopo()">Início</a>
+      <a routerLink="/comprar" (click)="rolarAoTopo()">Todos os livros</a>
+      <a routerLink="/sobre-nos" (click)="rolarAoTopo()">Nossa história</a>
+      <a routerLink="/pedidos" (click)="rolarAoTopo()">Meus pedidos</a>
     </nav>
 
     <div class="footer-column">

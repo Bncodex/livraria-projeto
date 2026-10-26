@@ -396,3 +396,215 @@ aside {
 }
 
 
+
+
+/* --- Estrutura e Estilos de Favoritos (Wishlist) --- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wishlist-link {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  min-height: 40px;
+  padding: 8px 13px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  font-size: 0.83rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.wishlist-link:hover {
+  border-color: var(--lavender);
+  background: var(--brand-soft);
+  color: var(--brand);
+  transform: translateY(-1px);
+}
+
+.wishlist-link svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.wishlist-link .fav-badge {
+  display: grid;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 4px;
+  place-items: center;
+  border-radius: 999px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 800;
+  animation: heartPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Botão de favorito discreto no card de livro */
+.fav-badge-btn {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(229, 223, 213, 0.8);
+  color: var(--ink-soft);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(23, 45, 68, 0.1);
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  padding: 0;
+}
+
+.fav-badge-btn:hover {
+  transform: scale(1.12);
+  color: #ff4d6d;
+  background: #ffffff;
+  border-color: #ffccd5;
+  box-shadow: 0 6px 16px rgba(255, 77, 109, 0.25);
+}
+
+.fav-badge-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  transition: fill 0.2s ease, transform 0.2s ease;
+}
+
+.fav-badge-btn.ativo {
+  color: #ff3358;
+  background: #fff5f7;
+  border-color: #ffb3c1;
+}
+
+.fav-badge-btn.ativo svg {
+  fill: #ff3358;
+  animation: heartPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Modal Detalhes: Ações com Favorito */
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-fav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 16px;
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink) !important;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-fav-btn:hover {
+  border-color: #ffb3c1 !important;
+  background: #fff5f7 !important;
+  color: #ff3358 !important;
+  transform: translateY(-1px);
+}
+
+.modal-fav-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.modal-fav-btn.ativo {
+  color: #ff3358 !important;
+  background: #fff5f7 !important;
+  border-color: #ffb3c1 !important;
+}
+
+.modal-fav-btn.ativo svg {
+  fill: #ff3358;
+}
+
+.modal-add-btn {
+  padding: 11px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--brand);
+  color: var(--on-brand);
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-add-btn:hover {
+  background: var(--brand-deep);
+  transform: translateY(-1px);
+}
+
+@keyframes heartPop {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+
+/* Responsividade no mobile */
+@media (max-width: 580px) {
+  .wishlist-link span { display: none; }
+  .modal-actions { flex-direction: column; width: 100%; }
+  .modal-fav-btn, .modal-add-btn { width: 100%; justify-content: center; }
+}
+
+/* Modo escuro para os novos botões */
+html[data-tema='escuro'] .wishlist-link {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+html[data-tema='escuro'] .wishlist-link:hover {
+  background: var(--brand-soft);
+  color: var(--lavender);
+}
+html[data-tema='escuro'] .fav-badge-btn {
+  background: rgba(25, 40, 58, 0.9);
+  border-color: var(--line);
+  color: var(--ink-soft);
+}
+html[data-tema='escuro'] .fav-badge-btn:hover {
+  background: #2b3a50;
+  color: #ff859d;
+  border-color: #ff4d6d;
+}
+html[data-tema='escuro'] .fav-badge-btn.ativo {
+  background: #392233;
+  border-color: #7d334e;
+  color: #ff6e8b;
+}
+html[data-tema='escuro'] .modal-fav-btn {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+}
+html[data-tema='escuro'] .modal-fav-btn.ativo {
+  background: #392233 !important;
+  border-color: #7d334e !important;
+  color: #ff859d !important;
+}

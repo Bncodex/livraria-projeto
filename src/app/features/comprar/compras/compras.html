@@ -3,6 +3,13 @@
     <a class="brand" routerLink="/" aria-label="Página inicial do Universo Literário"><img src="/images/logoprojeto-removebg-preview.png" alt="" /><span><strong>Universo</strong>Literário</span></a>
     <nav><a routerLink="/">Início</a><a routerLink="/comprar" class="active">Livros</a><a routerLink="/sobre-nos">Nossa história</a></nav>
     <div class="header-actions">
+      <button type="button" class="wishlist-link" (click)="favoritos.abrir()" [attr.aria-label]="favoritos.quantidade() + ' livro(s) nos favoritos'" title="Ver livros favoritos">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <span>Favoritos</span>
+        @if (favoritos.quantidade() > 0) {
+          <b class="fav-badge">{{ favoritos.quantidade() }}</b>
+        }
+      </button>
       <app-conta-conectada />
       <a class="cart-link" href="#carrinho" [attr.aria-label]="carrinho.quantidade() + ' item(ns) no carrinho'">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H6.4M10 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" /></svg>
@@ -36,13 +43,30 @@
       <div class="catalog-grid">
         @for (livro of livrosFiltrados(); track livro.id) {
           <article class="shop-book" tabindex="0" role="button" [attr.aria-label]="'Ver detalhes de ' + livro.titulo" (click)="abrirDetalhes(livro)" (keydown.enter)="abrirDetalhes(livro)" (keydown.space)="abrirDetalhes(livro); $event.preventDefault()">
-            <div class="cover-stage"><span>{{ livro.genero }}</span><img class="cover" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" /></div>
+            <div class="cover-stage">
+              <span>{{ livro.genero }}</span>
+              <button
+                type="button"
+                class="fav-badge-btn"
+                [class.ativo]="favoritos.isFavorito(livro.id)"
+                (click)="alternarFavorito(livro, $event)"
+                [attr.aria-label]="favoritos.isFavorito(livro.id) ? 'Remover dos favoritos' : 'Salvar para depois'"
+                [title]="favoritos.isFavorito(livro.id) ? 'Remover dos favoritos' : 'Salvar para depois'">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </button>
+              <img class="cover" [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" />
+            </div>
             <div class="shop-book-info">
               <div class="rating" aria-label="Avaliação 5 de 5">★★★★★ <small>5.0</small></div>
               <h3>{{ livro.titulo }}</h3>
               <p>{{ livro.autor }}</p>
               <strong>{{ livro.preco | currency: 'BRL' }}</strong>
-              <div class="book-actions"><button class="details-button" type="button" (click)="abrirDetalhes(livro); $event.stopPropagation()">Detalhes</button><button type="button" (click)="adicionar(livro); $event.stopPropagation()">Adicionar</button></div>
+              <div class="book-actions">
+                <button class="details-button" type="button" (click)="abrirDetalhes(livro); $event.stopPropagation()">Detalhes</button>
+                <button type="button" (click)="adicionar(livro); $event.stopPropagation()">Adicionar</button>
+              </div>
             </div>
           </article>
         } @empty {
@@ -100,7 +124,23 @@
         <h2 [id]="'book-title-' + livro.id">{{ livro.titulo }}</h2>
         <p class="modal-author">por {{ livro.autor }}</p>
         <p class="modal-synopsis">{{ livro.sinopse }}</p>
-        <div class="modal-footer"><strong>{{ livro.preco | currency: 'BRL' }}</strong><button type="button" (click)="adicionar(livro); fecharDetalhes()">Adicionar à sacola</button></div>
+        <div class="modal-footer">
+          <strong>{{ livro.preco | currency: 'BRL' }}</strong>
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="modal-fav-btn"
+              [class.ativo]="favoritos.isFavorito(livro.id)"
+              (click)="favoritos.alternar(livro)"
+              [title]="favoritos.isFavorito(livro.id) ? 'Remover dos favoritos' : 'Salvar nos favoritos para comprar depois'">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              <span>{{ favoritos.isFavorito(livro.id) ? 'Salvo' : 'Salvar para depois' }}</span>
+            </button>
+            <button type="button" class="modal-add-btn" (click)="adicionar(livro); fecharDetalhes()">Adicionar à sacola</button>
+          </div>
+        </div>
       </div>
     </section>
   </div>

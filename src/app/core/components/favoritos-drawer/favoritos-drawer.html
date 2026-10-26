@@ -1,0 +1,72 @@
+@if (favoritos.aberto()) {
+  <div class="fav-overlay" (click)="fechar()">
+    <aside class="fav-drawer" role="dialog" aria-modal="true" aria-labelledby="fav-drawer-title" (click)="$event.stopPropagation()">
+      <div class="drawer-header">
+        <div>
+          <span class="drawer-kicker">✦ Salvos para depois</span>
+          <h2 id="fav-drawer-title">Livros Favoritos</h2>
+        </div>
+        <button type="button" class="close-btn" (click)="fechar()" aria-label="Fechar lista de favoritos">×</button>
+      </div>
+
+      <div class="drawer-body">
+        @if (favoritos.quantidade() === 0) {
+          <div class="empty-favs">
+            <span class="empty-favs-icon" aria-hidden="true">♡</span>
+            <h3>Sua lista está vazia</h3>
+            <p>Viu um livro interessante mas quer comprar em outro momento? Clique no coraçãozinho em qualquer livro para guardá-lo aqui.</p>
+            <a routerLink="/comprar" class="btn-browse" (click)="fechar()">Explorar livros</a>
+          </div>
+        } @else {
+          <div class="fav-count-bar">
+            <span>{{ favoritos.quantidade() }} história(s) favoritada(s)</span>
+            <button type="button" class="btn-clear" (click)="favoritos.limpar()">Limpar lista</button>
+          </div>
+
+          <div class="fav-list">
+            @for (livro of favoritos.itens(); track livro.id) {
+              <article class="fav-card">
+                <img [src]="livro.imagem" [alt]="'Capa de ' + livro.titulo" class="fav-cover" />
+                <div class="fav-details">
+                  <span class="fav-genre">{{ livro.genero }}</span>
+                  <h4 class="fav-title">{{ livro.titulo }}</h4>
+                  <p class="fav-author">{{ livro.autor }}</p>
+                  <strong class="fav-price">{{ livro.preco | currency: 'BRL' }}</strong>
+                  <div class="fav-actions">
+                    <button type="button" class="btn-add-cart" (click)="adicionarAoCarrinho(livro)">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 7H6.4M10 20a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" /></svg>
+                      Adicionar à sacola
+                    </button>
+                    <button type="button" class="btn-remove" (click)="remover(livro.id)" aria-label="Remover dos favoritos" title="Remover dos favoritos">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            }
+          </div>
+        }
+      </div>
+
+      @if (favoritos.quantidade() > 0) {
+        <div class="drawer-footer">
+          <div class="total-row">
+            <span>Total dos desejos:</span>
+            <strong>{{ favoritos.total() | currency: 'BRL' }}</strong>
+          </div>
+          <p class="footer-hint">Guarde seus livros aqui até a hora certa de comprar.</p>
+          <button type="button" class="btn-add-all" (click)="adicionarTodosAoCarrinho()">
+            Mover todos para a sacola
+          </button>
+        </div>
+      }
+    </aside>
+  </div>
+}
+
+@if (favoritos.aviso()) {
+  <div class="fav-toast" role="status" aria-live="polite">
+    <span class="fav-toast-icon">♥</span>
+    <span>{{ favoritos.aviso() }}</span>
+  </div>
+}

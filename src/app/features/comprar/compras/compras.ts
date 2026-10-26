@@ -3,6 +3,7 @@ import { Component, HostListener, computed, inject, signal } from '@angular/core
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CarrinhoFacade } from '../../../core/facades/carrinho.facade';
+import { FavoritosFacade } from '../../../core/facades/favoritos.facade';
 import { Livro } from '../../../core/models/livro.model';
 import { ContaConectada } from '../../../core/components/conta-conectada/conta-conectada';
 
@@ -14,6 +15,7 @@ import { ContaConectada } from '../../../core/components/conta-conectada/conta-c
 })
 export class Compras {
   readonly carrinho = inject(CarrinhoFacade);
+  readonly favoritos = inject(FavoritosFacade);
   readonly livroSelecionado = signal<Livro | null>(null);
   readonly busca = signal('');
   readonly categoriaAtiva = signal('Todos');
@@ -59,6 +61,15 @@ export class Compras {
     this.aviso.set(`${livro.titulo} foi adicionado à sacola.`);
     setTimeout(() => this.aviso.set(''), 2600);
   }
+
+  alternarFavorito(livro: Livro, event?: Event) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+    this.favoritos.alternar(livro);
+  }
+
   diminuir(index: number) { this.carrinho.diminuir(index); }
   remover(index: number) { this.carrinho.remover(index); }
   abrirDetalhes(livro: Livro) { this.livroSelecionado.set(livro); }

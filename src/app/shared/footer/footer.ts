@@ -3,10 +3,14 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  standalone: true,
   imports: [RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.css'
 })
 export class Footer {
+  rolarAoTopo(): void {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
 }

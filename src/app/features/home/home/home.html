@@ -11,6 +11,19 @@
       <a routerLink="/sobre-nos">Nossa história</a>
     </nav>
     <div class="top-actions">
+      <button
+        type="button"
+        class="wishlist-top-btn"
+        (click)="favoritos.abrir()"
+        [attr.aria-label]="favoritos.quantidade() + ' livro(s) favoritos'"
+        title="Ver livros favoritados (Salvos para depois)">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        @if (favoritos.quantidade() > 0) {
+          <span class="fav-count-pill">{{ favoritos.quantidade() }}</span>
+        }
+      </button>
       <a class="search-link" routerLink="/comprar" aria-label="Buscar livros">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
       </a>
@@ -19,9 +32,14 @@
   </header>
 
   <section class="hero">
-    <img src="/images/saladeleitura.png" alt="Interior acolhedor de uma biblioteca" />
+    <img src="/images/saladeleitura.png" alt="Interior acolhedor de uma biblioteca" class="hero-bg-img" />
+    <div class="hero-ambient-stars" aria-hidden="true">
+      <span class="star-particle p1">✦</span>
+      <span class="star-particle p2">✧</span>
+      <span class="star-particle p3">✦</span>
+    </div>
     <div class="hero-content">
-      <span class="hero-seal">Curadoria da semana</span>
+      <span class="hero-seal">✦ Curadoria da semana</span>
       <p class="eyebrow">Um universo inteiro em cada página</p>
       <h1>Seu próximo mundo começa aqui.</h1>
       <p class="hero-text">Histórias escolhidas para despertar ideias, guardar memórias e acompanhar você muito além da última página.</p>
@@ -62,13 +80,27 @@
       <a routerLink="/comprar">Ver catálogo <span>→</span></a>
     </div>
     <div class="book-grid">
-      @for (livro of destaques; track livro.titulo; let i = $index) {
+      @for (livro of destaques; track livro.id; let i = $index) {
         <a class="book-card" routerLink="/comprar">
-          <div class="image-stage"><span class="rank">0{{ i + 1 }}</span><img [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" /></div>
+          <div class="image-stage">
+            <span class="rank">0{{ i + 1 }}</span>
+            <button
+              type="button"
+              class="fav-home-btn"
+              [class.ativo]="favoritos.isFavorito(livro.id)"
+              (click)="alternarFavorito(livro, $event)"
+              [title]="favoritos.isFavorito(livro.id) ? 'Remover dos favoritos' : 'Salvar nos favoritos para comprar depois'"
+              [attr.aria-label]="favoritos.isFavorito(livro.id) ? 'Remover ' + livro.titulo + ' dos favoritos' : 'Salvar ' + livro.titulo + ' nos favoritos'">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </button>
+            <img [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" />
+          </div>
           <div class="book-info">
             <span class="book-genre">{{ livro.genero }}</span>
             <h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p>
-            <div><strong>{{ livro.preco }}</strong><span class="card-arrow" aria-hidden="true">↗</span></div>
+            <div><strong>{{ livro.precoFormatado }}</strong><span class="card-arrow" aria-hidden="true">↗</span></div>
           </div>
         </a>
       }

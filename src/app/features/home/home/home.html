@@ -32,15 +32,26 @@
   </header>
 
   <section class="hero">
-    <img src="/images/saladeleitura.png" alt="Interior acolhedor de uma biblioteca" class="hero-bg-img" />
-    <div class="hero-ambient-stars" aria-hidden="true">
-      <span class="star-particle p1">✦</span>
-      <span class="star-particle p2">✧</span>
-      <span class="star-particle p3">✦</span>
-    </div>
+    <video
+      #heroVideo
+      class="hero-bg-video"
+      [class.oculto]="exibindoReverso()"
+      src="/images/videos/videouniversoanimado.mp4"
+      autoplay
+      muted
+      playsinline
+      [muted]="true"
+      (loadedmetadata)="iniciarVideoPingPong(heroVideo, heroCanvas)"
+      (ended)="reverterVideo(heroVideo, heroCanvas)"
+      aria-hidden="true">
+    </video>
+    <canvas
+      #heroCanvas
+      class="hero-bg-video hero-bg-canvas"
+      [class.ativo]="exibindoReverso()"
+      aria-hidden="true">
+    </canvas>
     <div class="hero-content">
-      <span class="hero-seal">✦ Curadoria da semana</span>
-      <p class="eyebrow">Um universo inteiro em cada página</p>
       <h1>Seu próximo mundo começa aqui.</h1>
       <p class="hero-text">Histórias escolhidas para despertar ideias, guardar memórias e acompanhar você muito além da última página.</p>
       <div class="hero-actions">
@@ -84,23 +95,25 @@
         <a class="book-card" routerLink="/comprar">
           <div class="image-stage">
             <span class="rank">0{{ i + 1 }}</span>
-            <button
-              type="button"
-              class="fav-home-btn"
-              [class.ativo]="favoritos.isFavorito(livro.id)"
-              (click)="alternarFavorito(livro, $event)"
-              [title]="favoritos.isFavorito(livro.id) ? 'Remover dos favoritos' : 'Salvar nos favoritos para comprar depois'"
-              [attr.aria-label]="favoritos.isFavorito(livro.id) ? 'Remover ' + livro.titulo + ' dos favoritos' : 'Salvar ' + livro.titulo + ' nos favoritos'">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-              </svg>
-            </button>
             <img [src]="livro.imagem" [alt]="'Capa do livro ' + livro.titulo" />
           </div>
           <div class="book-info">
             <span class="book-genre">{{ livro.genero }}</span>
             <h3>{{ livro.titulo }}</h3><p>{{ livro.autor }}</p>
-            <div><strong>{{ livro.precoFormatado }}</strong><span class="card-arrow" aria-hidden="true">↗</span></div>
+            <div class="book-price-row">
+              <strong>{{ livro.precoFormatado }}</strong>
+              <button
+                type="button"
+                class="fav-inline-btn"
+                [class.ativo]="favoritos.isFavorito(livro.id)"
+                (click)="alternarFavorito(livro, $event)"
+                [title]="favoritos.isFavorito(livro.id) ? 'Remover dos favoritos' : 'Salvar nos favoritos para comprar depois'"
+                [attr.aria-label]="favoritos.isFavorito(livro.id) ? 'Remover ' + livro.titulo + ' dos favoritos' : 'Salvar ' + livro.titulo + ' nos favoritos'">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </a>
       }

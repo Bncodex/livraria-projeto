@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './shared/footer/footer';
 import { FavoritosDrawer } from './core/components/favoritos-drawer/favoritos-drawer';
@@ -9,5 +9,10 @@ import { FavoritosDrawer } from './core/components/favoritos-drawer/favoritos-dr
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
+  ngOnInit(): void {
+    if (typeof document !== 'undefined') {
+      document.body.classList.add('loaded');
+    }
+  }
 }

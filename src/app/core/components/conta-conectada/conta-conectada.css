@@ -21,32 +21,19 @@
 .login-link {
   border: 0;
   border-radius: 7px;
-  background: var(--brand);
-  color: var(--on-brand);
-  padding: 8px 10px;
+  background: linear-gradient(135deg, #7c4dff 0%, #6c3eb3 100%);
+  color: #ffffff;
+  padding: 8px 12px;
   text-decoration: none;
   font:
     700 0.75rem var(--font-sans);
   cursor: pointer;
+  box-shadow: 0 6px 16px rgba(108, 62, 179, 0.35);
 }
-.theme-toggle {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  place-items: center;
-  border: 1px solid var(--line) !important;
-  border-radius: 50%;
-  background: transparent !important;
-  color: var(--ink) !important;
-  transition: background .2s ease, color .2s ease, transform .2s ease;
-}
-.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.theme-toggle:hover { background: var(--brand-soft) !important; color: var(--brand) !important; transform: rotate(12deg); }
 .session button:hover,
 .session a:hover,
 .login-link:hover {
-  background: var(--brand-deep);
+  background: linear-gradient(135deg, #8b5cf6 0%, #5b2ea6 100%);
 }
 @media (max-width: 520px) {
   .session-name { display: none; }

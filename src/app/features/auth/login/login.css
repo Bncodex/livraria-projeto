@@ -1,43 +1,56 @@
 .login-page {
+  --ink: #f3effb;
+  --ink-soft: #b6c2d9;
+  --paper: #090d1a;
+  --paper-deep: #12182b;
+  --surface: rgba(20, 27, 48, 0.84);
+  --line: rgba(181, 138, 229, 0.22);
+  --brand: #b98eff;
+  --brand-deep: #d4b8ff;
+  --brand-soft: rgba(124, 77, 255, 0.2);
   display: grid;
   min-height: 100vh;
   place-items: center;
   padding: 28px;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 18% 20%, rgba(140, 96, 194, .32), transparent 28%), radial-gradient(circle at 85% 82%, rgba(88, 126, 155, .24), transparent 27%), #132b43;
-  color: #193450;
+  background:
+    radial-gradient(circle at 15% 18%, rgba(114, 59, 204, 0.24) 0%, transparent 42%),
+    radial-gradient(circle at 85% 48%, rgba(56, 98, 196, 0.18) 0%, transparent 46%),
+    radial-gradient(circle at 30% 82%, rgba(124, 62, 189, 0.2) 0%, transparent 48%),
+    linear-gradient(180deg, #070b14 0%, #111328 38%, #0d1629 74%, #09101f 100%) !important;
+  color: var(--ink);
 }
-.login-page::before, .login-page::after { content: '✦'; position: absolute; color: rgba(217,194,241,.2); font: 400 8rem var(--font-display); }
-.login-page::before { top: 8%; left: 8%; }
-.login-page::after { right: 9%; bottom: 5%; font-size: 4rem; }
 .login-card {
   position: relative;
   z-index: 1;
   width: min(100%, 440px);
   padding: 36px;
-  border: 1px solid rgba(255,255,255,.55);
+  border: 1px solid var(--line) !important;
   border-radius: var(--radius-lg);
-  background: var(--surface);
-  box-shadow: 0 28px 75px rgba(0, 0, 0, .3);
+  background: var(--surface) !important;
+  backdrop-filter: blur(16px);
+  color: var(--ink) !important;
+  box-shadow: 0 28px 75px rgba(3, 6, 15, .65), 0 0 48px rgba(108, 62, 179, .2);
 }
 .home-link {
   display: inline-flex;
   margin-bottom: 18px;
-  color: #53677a;
+  color: var(--ink-soft) !important;
   font-size: 0.78rem;
   font-weight: 800;
   text-decoration: none;
 }
-.home-link:hover { color: #6f42c1; }
+.home-link:hover { color: var(--brand) !important; }
 .brand img {
   width: 82px;
   height: 82px;
   object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(185, 142, 255, 0.35));
 }
 .eyebrow {
   margin: 21px 0 9px;
-  color: #6f42c1;
+  color: var(--brand);
   text-transform: uppercase;
   letter-spacing: 0.13em;
   font-size: 0.7rem;
@@ -45,11 +58,12 @@
 }
 .login-card h1 {
   margin: 0;
+  color: #f6f3fc !important;
   font:
     400 2.6rem var(--font-display);
 }
 .login-card > p {
-  color: #647688;
+  color: var(--ink-soft);
   line-height: 1.55;
 }
 form {
@@ -58,7 +72,7 @@ form {
 label {
   display: block;
   margin-top: 17px;
-  color: #485c70;
+  color: #e2dcf2 !important;
   font-size: 0.8rem;
   font-weight: 800;
 }
@@ -67,19 +81,21 @@ input {
   width: 100%;
   margin-top: 7px;
   padding: 13px 14px;
-  border: 1px solid #cbd3d9;
+  border: 1px solid rgba(181, 138, 229, 0.28) !important;
   border-radius: var(--radius-sm);
+  background: rgba(11, 17, 32, 0.85) !important;
+  color: #f6f3fc !important;
   font: 1rem var(--font-sans);
 }
 input:focus {
-  outline: 2px solid #c7a6ed;
-  border-color: #6f42c1;
+  outline: 2px solid #b98eff;
+  border-color: #b98eff !important;
 }
 small,
 .form-error {
   display: block;
   margin: 6px 0 0;
-  color: #a3233b;
+  color: #ff859d;
   font-size: 0.76rem;
 }
 .form-error {
@@ -91,13 +107,14 @@ button {
   padding: 14px;
   border: 0;
   border-radius: var(--radius-sm);
-  background: var(--brand);
-  color: var(--on-brand);
+  background: linear-gradient(135deg, #7c4dff 0%, #6c3eb3 100%) !important;
+  color: #ffffff !important;
   font-weight: 800;
   cursor: pointer;
+  box-shadow: 0 10px 24px rgba(108, 62, 179, 0.4);
 }
 button:hover {
-  background: var(--brand-deep);
+  background: linear-gradient(135deg, #8b5cf6 0%, #5b2ea6 100%) !important;
 }
 .accounts {
   display: grid;
@@ -105,10 +122,12 @@ button:hover {
   margin-top: 26px;
   padding: 16px;
   border-radius: var(--radius-sm);
-  background: var(--brand-soft);
-  color: #4d3577;
+  border: 1px solid rgba(181, 138, 229, 0.2);
+  background: rgba(124, 77, 255, 0.14) !important;
+  color: #e6dcf8 !important;
   font-size: 0.76rem;
 }
 .accounts strong {
   font-size: 0.85rem;
+  color: #ffffff;
 }
